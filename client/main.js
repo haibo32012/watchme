@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import '../lib/collection.js';
+import '../lib/accounts-config.js';
 
 import './main.html';
 
@@ -8,10 +9,14 @@ Template.showVideo.onCreated(function () {
   
 });
 
+Template.showVideo.onRendered(function() {
+
+});
+
 Template.showVideo.helpers({
-  file: function () {
-  	return files.findOne();
-  }
+  //file: function () {
+  //	return files.findOne();
+  //}
 });
 
 Template.uploadForm.events({
@@ -20,8 +25,8 @@ Template.uploadForm.events({
   		let upload = files.insert({
   			file: e.currentTarget.files[0],
   			streams: 'dynamic',
-  			chunkSize: 'dynamic'
-  		}, false);
+  			chunkSize: 'dynamic',
+      }, false);
 
   		upload.on('start', function() {
 
