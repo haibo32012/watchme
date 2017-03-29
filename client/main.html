@@ -19,10 +19,13 @@
 
 <template name="showVideo">
   <p>Show videos</p>
-
-  <video height="auto" controls="controls">
-    <source src="{{file.link}}?play=true" type="{{file.type}}"/>
+  {{#with file.with}}
+  <video height="auto" controls="controls" autoplay>
+    <source src="{{link}}?play=true" type="{{type}}"/>
   </video>
+  {{else}}
+    Loading Video
+  {{/with}}
 </template>
 
 <template name="uploadForm">

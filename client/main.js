@@ -15,9 +15,9 @@ Template.showVideo.onRendered(function() {
 });
 
 Template.showVideo.helpers({
-  //file: function () {
-  //	return files.findOne();
-  //}
+  file: function () {
+  	return files.findOne();
+  }
 });
 
 Template.uploadForm.events({
