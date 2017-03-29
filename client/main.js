@@ -1,7 +1,8 @@
+import {Meteor} from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import '../lib/collection.js';
-import '../lib/accounts-config.js';
+import '../imports/accounts-config.js';
 
 import './main.html';
 
@@ -22,8 +23,12 @@ Template.showVideo.helpers({
 Template.uploadForm.events({
   'change #fileInput': function(e, template) {
   	if (e.currentTarget.files && e.currentTarget.files[0]) {
+      let video = e.currentTarget.files[0];
+      video.userId = Meteor.userId();
   		let upload = files.insert({
-  			file: e.currentTarget.files[0],
+
+  			file: video,
+        //userId: Meteor.userId(),
   			streams: 'dynamic',
   			chunkSize: 'dynamic',
       }, false);
