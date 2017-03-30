@@ -20,7 +20,7 @@
 <template name="showVideo">
   <p>Show videos</p>
   {{#with file.with}}
-  <video height="auto" controls="controls" autoplay>
+  <video width="320" height="240" controls="controls" autoplay>
     <source src="{{link}}?play=true" type="{{type}}"/>
   </video>
   {{else}}
