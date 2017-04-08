@@ -1,23 +1,10 @@
-<head>
-  <title>watchme</title>
-</head>
-
-<body>
-<div>
-  {{> loginButtons}}
-</div>
-
-  <h1>Welcome to WatchMe!</h1>
-  <div>
-    {{> showVideo}}
-  </div>
-  <hr>
-  <div>
-    {{> uploadForm}}
-  </div>
-</body>
 
 <template name="showVideo">
+
+  <div>
+  {{> loginButtons}}
+  </div>
+
   <p>Show videos</p>
   {{#with file.with}}
   <video width="320" height="240" controls="controls" autoplay>
@@ -28,11 +15,4 @@
   {{/with}}
 </template>
 
-<template name="uploadForm">
-  <h2>Upload</h2>
-  <div>
- 
-    <input type="file" id="fileInput">
 
-  </div>
-</template>
