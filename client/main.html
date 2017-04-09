@@ -2,11 +2,11 @@
 <template name="showVideo">
   <p>Show videos</p>
   {{#with file.with}}
-  
-  <video width="320" height="240">
-    <source src="{{link}}" type="{{type}}"/>
-  </video>
-  
+  <a href="{{pathFor 'playPage'}}">
+    <video width="320" height="240">
+      <source src="{{link}}" type="{{type}}"/>
+    </video>
+  </a>
   {{else}}
     Loading Video
   {{/with}}
