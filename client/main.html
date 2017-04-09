@@ -1,15 +1,12 @@
 
 <template name="showVideo">
-
-  <div>
-  {{> loginButtons}}
-  </div>
-
   <p>Show videos</p>
   {{#with file.with}}
-  <video width="320" height="240" controls="controls" autoplay>
-    <source src="{{link}}?play=true" type="{{type}}"/>
+  
+  <video width="320" height="240">
+    <source src="{{link}}" type="{{type}}"/>
   </video>
+  
   {{else}}
     Loading Video
   {{/with}}

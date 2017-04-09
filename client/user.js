@@ -4,7 +4,11 @@ import {Template} from 'meteor/templating';
 import "./user.html";
 
 Template.userProfile.helpers({
-	user: function() {
-		return Meteor.userId();
+	userName: function() {
+		return Meteor.user().username;
+	},
+
+	userId: function() {
+		return Meteor.user()._id;
 	}
 });
