@@ -25,3 +25,4 @@ accounts-password
 ostrio:files
 # kadira:flow-router
 iron:router
+twbs:bootstrap
