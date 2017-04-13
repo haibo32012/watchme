@@ -16,6 +16,7 @@ Template.showVideo.onRendered(function() {
 
 Template.showVideo.helpers({
   file: function () {
+  	//console.log(files.findOne());
   	return files.findOne();
   }
 });
