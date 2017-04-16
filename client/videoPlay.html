@@ -9,9 +9,29 @@
  				<video width="320" height="240" controls="controls" autoplay>
     				<source src="{{link}}?play=true" type="{{type}}"/>
   	 	 		</video>
+  	 	 		<li>{{name}}</li>
+  	 	 		<a href="/user/{{userId}}">
+    				<li>{{userId}}</li>
+    			</a>
   			{{/with}}
   		{{else}}
   			<p>Loading....</p>
   		{{/if}}
+	</div>
+
+	<div>
+		<li>related video</li>
+	</div>
+
+	<div>
+		<div>
+			<form>
+				<input type="text" name="critics">
+				<button type="submit"></button>
+			</form>
+		</div>
+		<div>
+			<li>critics</li>
+		</div>
 	</div>
 </template>
