@@ -1,0 +1,1 @@
+import './hotTopic.html';

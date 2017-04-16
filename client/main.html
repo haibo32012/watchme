@@ -1,8 +1,8 @@
 
-<template name="showVideo">
+<template name="main">
 
   {{#with file.with}}
-  <a href="{{pathFor 'playPage'}}">
+  <a href="/post/{{_id}}">
     <video width="320" height="240">
       <source src="{{link}}" type="{{type}}"/>
     </video>

@@ -3,7 +3,7 @@ import {Template} from 'meteor/templating';
 
 import "./user.html";
 
-Template.userProfile.helpers({
+Template.user.helpers({
 	userName: function() {
 		return Meteor.user().username;
 	},

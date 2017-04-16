@@ -1,5 +1,4 @@
-<template name="mainLayout">
-<header>
+<template name="header">
 	<div>
   		{{> loginButtons}}
   	</div>
@@ -14,21 +13,12 @@
   	<div>
 		<ul>
 	
-			<li><a href="/">Home</a> </li>
+			<li><a href="/">Home</a></li>
 			<li><a href="/subscribe">subscribe</a></li>
-			<li><a href="/upload"> upload</a></li>
-			<li><a href="/user"> user</a></li>
+			<li><a href="/hotTopic">hotTopics</a></li>
+			<li><a href="/upload">upload</a></li>
+			<li><a href="/user">user</a></li>
 	
 		</ul>
 	</div>
-</header>
-
-<article>
-	{{> yield}}
-</article>
-
-<footer>
-	{{> yield "footer"}}
-</footer>
 </template>
-

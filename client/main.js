@@ -6,17 +6,17 @@ import '../imports/accounts-config.js';
 
 import './main.html';
 
-Template.showVideo.onCreated(function () {
+Template.main.onCreated(function () {
   
 });
 
-Template.showVideo.onRendered(function() {
+Template.main.onRendered(function() {
 
 });
 
-Template.showVideo.helpers({
+Template.main.helpers({
   file: function () {
-  	//console.log(files.findOne());
+  	console.log(files.findOne());
   	return files.findOne();
   }
 });

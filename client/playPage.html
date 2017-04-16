@@ -1,10 +1,3 @@
 <template name="playPage">
-	
-  {{#with file.with}}
-
-  <video width="320" height="240" controls="controls" autoplay>
-    <source src="{{link}}" type="{{type}}"/>
-  </video>
-  
-  {{/with}}
+	{{> videoPlay (listVideo _id)}}
 </template>
