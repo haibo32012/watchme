@@ -10,9 +10,16 @@
     				<source src="{{link}}?play=true" type="{{type}}"/>
   	 	 		</video>
   	 	 		<li>{{name}}</li>
+  	 	 		<hr>
+  	 	 		<li>
   	 	 		<a href="/user/{{userId}}">
     				<li>{{userId}}</li>
     			</a>
+    			</li>
+    			<li>
+    				<button name="subscribe_button">SUBSCRIBE</button>
+    			</li>
+    			<hr>
   			{{/with}}
   		{{else}}
   			<p>Loading....</p>
@@ -27,7 +34,7 @@
 		<div>
 			<form>
 				<input type="text" name="critics">
-				<button type="submit"></button>
+				<button type="submit">submit</button>
 			</form>
 		</div>
 		<div>
