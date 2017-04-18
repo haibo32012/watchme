@@ -1,4 +1,5 @@
 import './videoPlay.html';
+import './comment.js';
 
 Template.videoPlay.onCreated(function() {
 	let self = this;
