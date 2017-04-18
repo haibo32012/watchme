@@ -1,7 +1,7 @@
 
 <template name="main">
 
-  {{#with file.with}}
+  {{#each file}}
   <a href="/post/{{_id}}">
     <video width="320" height="240">
       <source src="{{link}}" type="{{type}}"/>
@@ -13,7 +13,7 @@
   </a>
   {{else}}
     Loading Video
-  {{/with}}
+  {{/each}}
 </template>
 
 

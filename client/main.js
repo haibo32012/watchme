@@ -6,6 +6,7 @@ import '../imports/accounts-config.js';
 
 import './main.html';
 
+
 Template.main.onCreated(function () {
   
 });
@@ -17,7 +18,7 @@ Template.main.onRendered(function() {
 Template.main.helpers({
   file: function () {
   	console.log(files.findOne());
-  	return files.findOne();
+  	return files.find();
   }
 });
 
