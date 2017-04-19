@@ -1,21 +1,17 @@
 import {Meteor} from 'meteor/meteor';
 import './comment.html';
+import './commentPost.js';
 
 Template.comment.onCreated(function() {
-	let self = this;
-	self.autorun(function() {
-		let id = FlowRouter.getParam('_id');
-		self.subscribe('Comments.all', id);
-	});
+	
 });
 
 
 Template.comment.helpers({
-	comment: function() {
+	commentsCount: function() {
 		let id = FlowRouter.getParam('_id');
-		console.log(id);
-		return Comments.findOne({videoId: id}) || {};
-	}
+		return Comments.find({videoId: id}).count();
+	},
 });
 
 Template.comment.events({
@@ -30,9 +26,10 @@ Template.comment.events({
 		Comments.insert({
 			videoId: videoId,
 			userId: userId,
-			body: body
+			body: body,
+			submitted: new Date()
 		});
 		console.log("comment success");
-		body = "";
+		body = '';
 	}
 });

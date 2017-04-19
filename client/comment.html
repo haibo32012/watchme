@@ -1,4 +1,5 @@
 <template name="comment">
+	<li>{{commentsCount}}</li>
 	<form name="commentform">
 		<div>
 			<input type="text" name="commentBody" id="commentText">
@@ -6,6 +7,6 @@
 		</div>
 	</form>
 	<div>
-		<li>{{comment.userId}}: {{comment.body}}</li>
+		{{> commentPost}}
 	</div>
 </template>

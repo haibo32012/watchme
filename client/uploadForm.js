@@ -11,6 +11,7 @@ Template.uploadForm.events({
   	if (e.currentTarget.files && e.currentTarget.files[0]) {
       let video = e.currentTarget.files[0];
       video.userId = Meteor.userId();
+      video.uploaddate = new Date();
   		let upload = files.insert({
 
   			file: video,

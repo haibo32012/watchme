@@ -3,21 +3,21 @@
 		<a href="/">Back</a>
 	</div>
 	<div>
-		<li>Hello World</li>
 		{{#if Template.subscriptionsReady}}
   			{{#with file.with}}
  				<video width="320" height="240" controls="controls" autoplay>
     				<source src="{{link}}?play=true" type="{{type}}"/>
   	 	 		</video>
   	 	 		<li>{{name}}</li>
+          <li class="dropdown-toggle">The introduction of this video</li>
+          <hr>
+          <div>
+            {{> toggleButton}}
+          </div>
   	 	 		<hr>
   	 	 		<li>
-  	 	 		<a href="/user/{{userId}}">
-    				<li>{{userId}}</li>
-    			</a>
-    			</li>
-    			<li>
-    				<button name="subscribe_button">SUBSCRIBE</button>
+  	 	 		  <span><a href="/user/{{userId}}">{{userId}}</a></span>
+    				<span>{{> subscribe}}</span>
     			</li>
     			<hr>
     		
@@ -26,6 +26,10 @@
   			<p>Loading....</p>
   		{{/if}}
 	</div>
+  <div>
+    {{> relatedList}}
+  </div>
+  <hr>
 	<div>
 		{{> comment}}
 	</div>
