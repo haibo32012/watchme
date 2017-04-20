@@ -1,0 +1,8 @@
+<template name="mySubscribeUser">
+	<li><h3>Subscribed users</h3></li>
+	{{#each subscribeUser}}
+		<li><a href="/user/{{subscribedUserId}}">{{subscribedUserId}}</a></li>
+	{{else}}
+
+	{{/each}}
+</template>

@@ -1,0 +1,15 @@
+<template name="userVideoList">
+<li><h3>My videos</h3></li>
+<hr>
+	{{#each file}}
+  <a href="/post/{{_id}}">
+    <video width="320" height="240">
+      <source src="{{link}}" type="{{type}}"/>
+    </video>
+    <li>{{name}}</li>
+  </a>
+ 
+  {{else}}
+    Loading Video
+  {{/each}}
+</template>

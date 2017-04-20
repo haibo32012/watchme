@@ -10,15 +10,20 @@
   	 	 		</video>
   	 	 		<li>{{name}}</li>
           <li class="dropdown-toggle">The introduction of this video</li>
+          <li>viewCount</li>
           <hr>
           <div>
-            {{> toggleButton}}
+            <li>
+              <span><button id="goodToggleButton">Good({{likecount}}) </button> </span>
+              <span><button id="badToggleButton">Bad ({{dislikecount}})</button> </span>
+           </li>
           </div>
   	 	 		<hr>
-  	 	 		<li>
-  	 	 		  <span><a href="/user/{{userId}}">{{userId}}</a></span>
+  	 	 		  <span>
+              <span><a href="/user/{{userId}}">{{userId}}</a></span>
+              <span>{{subscribeCount}}</span>
+            </span>
     				<span>{{> subscribe}}</span>
-    			</li>
     			<hr>
     		
   			{{/with}}

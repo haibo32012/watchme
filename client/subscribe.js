@@ -7,21 +7,24 @@ Template.subscribe.events({
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
 		let subscribed = file.userId;
-		let subscribedId;
+		//let subscribedId;
 		console.log(userId);
 		console.log(subscribed);
 		if (userId !== subscribed) {
-			subscribedId = subscribeCollection.findOne(
-				{userId: userId},
-				{subscribedUserId: subscribed}
-			);
-			if (subscribedId) {
-				subscribeCollection.remove(subscribedId);
+			let subscribedObject = subscribeCollection.findOne({
+				userId: userId,
+				subscribedUserId: subscribed
+			});
+			console.log(subscribedObject);
+
+			if (subscribedObject !== undefined) {
+				subscribeCollection.remove(subscribedObject._id);
 			} else {
-				subscribeCollection.insert(
-					{userId: userId},
-					{subscribedUserId: subscribed}
-				);
+				let subscribedObject = {
+					userId: userId,
+					subscribedUserId: subscribed
+				};
+				subscribeCollection.insert(subscribedObject);
 			}
 		} else {
 			return;
