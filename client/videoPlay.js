@@ -10,7 +10,36 @@ Template.videoPlay.onCreated(function() {
 	self.autorun(function() {
 		let id = FlowRouter.getParam('_id');
 		self.subscribe('files.all', id);
+		self.subscribe('userWatchedCollection.all');
 	});
+});
+
+Template.videoPlay.onRendered(function() {
+	let userId = Meteor.userId();
+	let id = FlowRouter.getParam('_id');
+	// Insert viewCount into the files collection
+	files.update(
+		{_id: id},
+		{$inc: {
+			viewcount: 1
+		}},
+	);
+
+	// If watched, insert into the userwatchedcollection
+	let userWatchedObject = userWatchedCollection.findOne({
+		userId: userId,
+		videoId: id
+	});
+	console.log(userWatchedObject);
+	if (userWatchedObject !== undefined) {
+		return;
+	} else {
+		userWatchedCollection.insert({
+			userId: userId,
+			videoId: id,
+		});
+	}
+	
 });
 
 Template.videoPlay.helpers({
