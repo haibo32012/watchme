@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import './videoPlay.html';
 import './comment.js';
-import './toggleButton.js';
+
 import './subscribe.js';
 import './relatedList.js';
 
@@ -121,6 +121,30 @@ Template.videoPlay.events({
 			files.update(id,
 				{$inc: {
 					'meta.dislike_count': 1
+				}},
+				//{validate: false},
+				{validate: false, filter: false}
+			);
+		}
+	},
+	'click #share': function() {
+		let userId = Meteor.userId();
+		let id = FlowRouter.getParam('_id');
+		let userShareObject = shareCollection.findOne({
+			userId: userId,
+			videoId: id
+		});
+		console.log(userShareObject);
+		if (userShareObject !== undefined) {
+			return ;
+		} else {
+			shareCollection.insert({
+				userId: userId,
+				videoId: id
+			});
+			files.update(id,
+				{$inc: {
+					'meta.share_count': 1
 				}},
 				//{validate: false},
 				{validate: false, filter: false}
