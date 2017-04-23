@@ -18,7 +18,7 @@ Template.main.onRendered(function() {
 Template.main.helpers({
   file: function () {
   	console.log(files.findOne());
-  	return files.find();
+  	return files.find({}, {sort: {'meta.created_at': -1}});
   }
 });
 

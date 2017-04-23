@@ -59,15 +59,20 @@ Template.videoPlay.events({
 		});
 		console.log(userLikeObject);
 		if (userLikeObject !== undefined) {
-			UserLikeCollection.remove(userLikeObject._id);
+			if (userLikeObject.isDislike === true) {
+				return;
+			} else {
+				UserLikeCollection.remove(userLikeObject._id);
 			
-			files.update(id,
-				{$inc: {
-					'meta.like_count': -1
-				}},
-				//{validate: false},
-				{validate: false, filter: false}
-			);
+				files.update(id,
+					{$inc: {
+						'meta.like_count': -1
+					}},
+					//{validate: false},
+					{validate: false, filter: false}
+				);
+			}
+			
 		} else {
 			UserLikeCollection.insert({
 				userId: userId,
@@ -93,20 +98,24 @@ Template.videoPlay.events({
 		});
 		console.log(userLikeObject);
 		if (userLikeObject !== undefined) {
-			UserLikeCollection.remove(userLikeObject._id);
+			if (userLikeObject.isLike === true) {
+				return;
+			} else {
+				UserLikeCollection.remove(userLikeObject._id);
 			
-			files.update(id,
-				{$inc: {
-					'meta.dislike_count': -1
-				}},
+				files.update(id,
+					{$inc: {
+						'meta.dislike_count': -1
+					}},
 				//{validate: false},
 				{validate: false, filter: false}
-			);
+				);
+			}
 		} else {
 			UserLikeCollection.insert({
 				userId: userId,
 				videoId: id,
-				isLike: false
+				isDislike: true
 			});
 			
 			files.update(id,

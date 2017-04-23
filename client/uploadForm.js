@@ -18,6 +18,7 @@ Template.uploadForm.events({
           like_count: parseInt(0),
           dislike_count: parseInt(0),
           view_count: parseInt(0),
+          share_count: 0,
           created_at: new Date()
         },
         //userId: Meteor.userId(),
