@@ -12,12 +12,13 @@
   	 	 		</video>
   	 	 		<li>{{name}}</li>
           <li class="dropdown-toggle">The introduction of this video</li>
-          <li>viewCount</li>
+          <li>{{meta.created_at}}</li>
+          <li>{{meta.view_count}}views</li>
           <hr>
           <div>
             <li>
-              <span><button id="goodToggleButton">Good({{likecount}}) </button> </span>
-              <span><button id="badToggleButton">Bad ({{dislikecount}})</button> </span>
+              <span><button id="goodToggleButton">Good({{meta.like_count}}) </button> </span>
+              <span><button id="badToggleButton">Bad ({{meta.dislike_count}})</button> </span>
            </li>
           </div>
   	 	 		<hr>

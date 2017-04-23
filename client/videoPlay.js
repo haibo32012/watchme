@@ -18,10 +18,9 @@ Template.videoPlay.onRendered(function() {
 	let userId = Meteor.userId();
 	let id = FlowRouter.getParam('_id');
 	// Insert viewCount into the files collection
-	files.update(
-		{_id: id},
+	files.update(id,
 		{$inc: {
-			viewcount: 1
+			'meta.view_count': 1
 		}},
 	);
 
@@ -62,10 +61,9 @@ Template.videoPlay.events({
 		if (userLikeObject !== undefined) {
 			UserLikeCollection.remove(userLikeObject._id);
 			
-			files.update(
-				{_id: id},
+			files.update(id,
 				{$inc: {
-					likecount: -1
+					'meta.like_count': -1
 				}},
 				//{validate: false},
 				{validate: false, filter: false}
@@ -77,10 +75,9 @@ Template.videoPlay.events({
 				isLike: true
 			});
 			
-			files.update(
-				{_id: id},
+			files.update(id,
 				{$inc: {
-					likecount: 1
+					'meta.like_count': 1
 				}},
 				//{validate: false},
 				{validate: false, filter: false}
@@ -88,6 +85,37 @@ Template.videoPlay.events({
 		}
 	},
 	'click #badToggleButton': function() {
-
+		let userId = Meteor.userId();
+		let id = FlowRouter.getParam('_id');
+		let userLikeObject = UserLikeCollection.findOne({
+			userId: userId,
+			videoId: id
+		});
+		console.log(userLikeObject);
+		if (userLikeObject !== undefined) {
+			UserLikeCollection.remove(userLikeObject._id);
+			
+			files.update(id,
+				{$inc: {
+					'meta.dislike_count': -1
+				}},
+				//{validate: false},
+				{validate: false, filter: false}
+			);
+		} else {
+			UserLikeCollection.insert({
+				userId: userId,
+				videoId: id,
+				isLike: false
+			});
+			
+			files.update(id,
+				{$inc: {
+					'meta.dislike_count': 1
+				}},
+				//{validate: false},
+				{validate: false, filter: false}
+			);
+		}
 	}
 });

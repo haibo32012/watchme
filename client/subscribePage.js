@@ -6,7 +6,7 @@ Template.subscribePage.helpers({
 		let userId = Meteor.userId();
 		let subscribeObject = subscribeCollection.find({userId: userId});
 		
-		console.log(subscribeObject.subscribedUserId);
+		console.log(subscribeObject);
 		return;
 	}
 });

@@ -11,10 +11,15 @@ Template.uploadForm.events({
   	if (e.currentTarget.files && e.currentTarget.files[0]) {
       let video = e.currentTarget.files[0];
       video.userId = Meteor.userId();
-      video.uploaddate = new Date();
   		let upload = files.insert({
 
   			file: video,
+        meta: {
+          like_count: parseInt(0),
+          dislike_count: parseInt(0),
+          view_count: parseInt(0),
+          created_at: new Date()
+        },
         //userId: Meteor.userId(),
   			streams: 'dynamic',
   			chunkSize: 'dynamic',
