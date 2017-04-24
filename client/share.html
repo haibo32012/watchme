@@ -1,0 +1,15 @@
+<template name="share">
+	{{#each file}}
+  <a href="/post/{{_id}}">
+    <video proload='auto' width="320" height="240">
+      <source src="{{link}}" type="{{type}}"/>
+    </video>
+    <li>{{name}}</li>
+  </a>
+  <a href="/user/{{userId}}">
+    <li>{{userId}}</li>
+  </a>
+  {{else}}
+    Loading Video
+  {{/each}}
+</template>
