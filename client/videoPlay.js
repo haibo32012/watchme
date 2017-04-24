@@ -11,6 +11,7 @@ Template.videoPlay.onCreated(function() {
 		let id = FlowRouter.getParam('_id');
 		self.subscribe('files.all', id);
 		self.subscribe('userWatchedCollection.all');
+		self.subscribe('shareCollection.all');
 	});
 });
 
@@ -130,13 +131,22 @@ Template.videoPlay.events({
 	'click #share': function() {
 		let userId = Meteor.userId();
 		let id = FlowRouter.getParam('_id');
+		console.log(userId);
+		console.log(id);
 		let userShareObject = shareCollection.findOne({
 			userId: userId,
 			videoId: id
 		});
 		console.log(userShareObject);
 		if (userShareObject !== undefined) {
-			return ;
+			shareCollection.remove(userShareObject._id);
+			files.update(id,
+				{$inc: {
+					'meta.share_count': -1
+				}},
+				//{validate: false},
+				{validate: false, filter: false}
+			);
 		} else {
 			shareCollection.insert({
 				userId: userId,
