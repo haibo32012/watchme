@@ -8,9 +8,16 @@
     </video>
     <li>{{name}}</li>
   </a>
-  <a href="/user/{{userId}}">
-    <li>{{userId}}</li>
-  </a>
+  <li>
+    <span>
+    <a href="/user/{{userId}}">
+      {{userId}}
+    </a>
+    </span>
+    <span>
+      {{meta.view_count}}views
+    </span>
+  </li>
   {{else}}
     Loading Video
   {{/each}}
