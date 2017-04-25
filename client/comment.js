@@ -19,11 +19,13 @@ Template.comment.events({
 		e.preventDefault();
 
 		let videoId = FlowRouter.getParam('_id');
+		let cursor = files.findOne({_id: videoId});
+		let videoOfUserId = cursor.userId;
 		let body = document.getElementById("commentText").value;
 		console.log(body);
 
 		let userId = Meteor.userId();
-		Comments.insert({
+		let comment = Comments.insert({
 			videoId: videoId,
 			userId: userId,
 			body: body,
@@ -31,5 +33,12 @@ Template.comment.events({
 		});
 		console.log("comment success");
 		body = '';
+		Notifications.insert({
+			notificationUserId: videoOfUserId,
+			userId: userId,
+			videoId: videoId,
+			commentId: comment._id,
+			read: false
+		});
 	}
 });

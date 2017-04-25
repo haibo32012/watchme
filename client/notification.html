@@ -1,3 +1,17 @@
 <template name="notification">
-	
+{{#if notificationCount}}
+	{{#each notifications}}
+		{{> notificationItem}}
+	{{/each}}
+{{else}}
+	<li><span>No Notifications</span></li>
+{{/if}}
+</template>
+
+<template name="notificationItem">
+	<li>
+		<a href="notificationPostPath">
+			<strong>{{userId}}</strong>commented on your post
+		</a>
+	</li>
 </template>

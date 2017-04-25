@@ -1,9 +1,29 @@
 <template name="commentPost">
 	{{#each comments}}
+		{{> commentItem}}
+	{{/each}}
+</template>
+
+<template name="commentItem">
 		<li>
 			<span>{{userId}}:</span>
 			<span>{{body}}</span>
 			<span>{{DateToISO submitted}}</span>
 		</li>
-	{{/each}}
+		<li>
+			<span><button id="likeComment">good({{likeCount}}) </button></span>
+			<span><button id="dislikeComment">bad({{dislikeCount}})</button></span>
+			<span><a href="/replycomment/{{_id}}">reply</a></span>
+		</li>
+		<li>
+			<span>
+				{{replyComment.userId}}:
+			</span>
+			<span>
+				{{replyComment.body}}
+			</span>
+			<span>
+				{{replyComment.submitTime}}
+			</span>
+		</li>
 </template>
