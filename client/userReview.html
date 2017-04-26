@@ -1,3 +1,33 @@
 <template name="userReview">
 	<li>ChangeProfile</li>
+	<div>
+		<li>
+			<span>
+				<img src="{{user.profile.picture}}"/>
+			</span>
+			<span>
+				<button id="photo">edit</button>
+			</span>
+		</li>
+		<li>
+			<span>
+				ALIAS:
+			</span>
+			<span>
+				{{user.profile.name}}
+			</span>
+			<span>
+				<button id="profileName">edit</button>
+			</span>
+		</li>
+	</div>
+	<div>
+		<li>
+			USER INTRODUCTION
+		</li>
+		{{user.profile.about}}
+		<li>
+			<button id="profileAbout">edit</button>
+		</li>
+	</div>
 </template>

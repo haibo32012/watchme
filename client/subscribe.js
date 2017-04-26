@@ -1,6 +1,16 @@
 import { Meteor } from 'meteor/meteor';
 import './subscribe.html';
 
+Template.subscribe.helpers({
+	user: function() {
+		let id = FlowRouter.getParam('_id');
+		let file = files.findOne({_id: id}) || {};
+		let subscribed = file.userId;
+		console.log(Meteor.users.findOne({_id: subscribed}));
+		return Meteor.users.findOne({_id: subscribed});
+	}
+});
+
 Template.subscribe.events({
 'click #subscribe_button':function() {
 		let userId = Meteor.userId();
@@ -19,12 +29,22 @@ Template.subscribe.events({
 
 			if (subscribedObject !== undefined) {
 				subscribeCollection.remove(subscribedObject._id);
+				Meteor.users.update(subscribed,
+					{$inc: {
+						'profile.subscribe_count': -1
+					}},
+				);
 			} else {
 				let subscribedObject = {
 					userId: userId,
 					subscribedUserId: subscribed
 				};
 				subscribeCollection.insert(subscribedObject);
+				Meteor.users.update(subscribed,
+					{$inc: {
+						'profile.subscribe_count': 1
+					}},
+				);
 			}
 		} else {
 			return;

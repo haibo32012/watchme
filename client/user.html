@@ -1,18 +1,23 @@
 
 <template name="user">
+	<div>
+	
 	<ul>
 		<li>
-			<span>{{userName}}</span><span><a href="/user/review/{{userId}}">Settle</a></span>
+			<span>
+				<img src="{{user.profile.picture}}">
+			</span>
+			<span>{{user.username}}</span><span><a href="/user/review/{{user._id}}">Settle</a></span>
 		</li>
 		<li>
-			{{userId}}
+			{{user._id}}
 		</li>
 		<hr>
 		<li>
-			<a href="/videos/{{userId}}">myVideos</a>
+			<a href="/videos/{{user._id}}">myVideos</a>
 		</li>
 		<li>
-			<a href="/subscribe/{{userId}}">mySubscribe</a>
+			<a href="/subscribe/{{user._id}}">mySubscribe</a>
 		</li>
 		<li>
 			<a href="/share">myShare</a>
@@ -21,5 +26,6 @@
 			<a href="/notification">myNotification</a>
 		</li>
 	</ul>
+	</div>
 
 </template>
