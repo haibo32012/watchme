@@ -1,9 +1,7 @@
 import {Meteor} from 'meteor/meteor';
-import {Template} from 'meteor/templating';
+import './header.html';
 
-import "./user.html";
-
-Template.user.onCreated(function() {
+Template.header.onCreated(function() {
 	let self = this;
 	self.autorun(function() {
 		let id = Meteor.userId();
@@ -11,7 +9,7 @@ Template.user.onCreated(function() {
 	});
 });
 
-Template.user.helpers({
+Template.header.helpers({
 	user: function() {
 		return Meteor.user();
 	}

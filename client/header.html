@@ -18,17 +18,21 @@
 			<li><a href="/hotTopic">hotTopic</a></li>
 			<li><a href="/upload">upload</a></li>
 			<li><a href="/user">user</a></li>
+      <li>
+        {{> loginButtons}}
+      </li>
+      
+      
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
     {{> search}}
+
 </template>
 <template name="search">
 	<div class="container">
-		<div>
-  			{{> loginButtons}}
-  		</div>
+		
   		<div>
   			<form class="form-inline">
   				<div class="form-group">
