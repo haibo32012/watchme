@@ -1,4 +1,5 @@
 <template name="notification">
+<div class="container">
 {{#if notificationCount}}
 	{{#each notifications}}
 		{{> notificationItem}}
@@ -6,6 +7,7 @@
 {{else}}
 	<li><span>No Notifications</span></li>
 {{/if}}
+</div>
 </template>
 
 <template name="notificationItem">

@@ -1,6 +1,6 @@
 
 <template name="main">
-
+<div class="container">
   {{#each file}}
   <a href="/post/{{_id}}">
     <video proload='auto' width="320" height="240">
@@ -21,6 +21,7 @@
   {{else}}
     Loading Video
   {{/each}}
+  </div>
 </template>
 
 

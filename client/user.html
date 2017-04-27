@@ -1,14 +1,15 @@
 
 <template name="user">
-	<div>
+	<div class="container">
 	
 	<ul>
 		<li>
+		{{> avatar user=this shape="circle"}}
 			<span>
-				<img src="{{user.profile.picture}}">
+				<img src="{{user.profile.picture}}" class="img-circle">
 			</span>
-			{{> avatar user=this shape="circle"}}
-			<span>{{user.username}}</span><span><a href="/user/review/{{user._id}}">Settle</a></span>
+			
+			<span>{{user.username}}</span><span><a href="/user/review/{{user._id}}" class="glyphicon glyphicon-cog"></a></span>
 		</li>
 		<li>
 			{{user._id}}

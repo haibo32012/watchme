@@ -1,5 +1,5 @@
 <template name="hotTopic">
-
+<div class="container">
   {{#each file}}
   <a href="/post/{{_id}}">
     <video width="320" height="240">
@@ -13,5 +13,5 @@
   {{else}}
     Loading Video
   {{/each}}
-
+</div>
 </template>
