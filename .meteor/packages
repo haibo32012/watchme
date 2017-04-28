@@ -34,3 +34,5 @@ kadira:blaze-layout
 supaseca:camera-ui
 utilities:avatar
 accounts-github
+easy:search
+easysearch:elasticsearch

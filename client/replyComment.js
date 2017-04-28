@@ -2,7 +2,11 @@ import {Meteor} from 'meteor/meteor';
 import './replyComment.html';
 
 Template.replyComment.helpers({
-
+	comment: function() {
+		let Id = FlowRouter.getParam('_id');
+		console.log(Id);
+		return Comments.findOne({_id: commentId});
+	}
 });
 
 Template.replyComment.events({

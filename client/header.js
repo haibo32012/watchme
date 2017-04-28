@@ -14,3 +14,16 @@ Template.header.helpers({
 		return Meteor.user();
 	}
 });
+
+Template.EasySearch.events({
+	'submit form': function() {
+		e.preventDefault();
+		let body = document.getElementById("searchText").value;
+		console.log(body);
+
+		let cursor = FilesIndex.search(body);
+		console.log(cursor.fetch());
+		console.log(cursor.count());
+		FlowRouter.go('/searchPage');
+	}
+});

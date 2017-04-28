@@ -1,0 +1,32 @@
+<template name="searchBox">
+<div class="container">
+	<div>
+		<ul>
+			<li>
+				Hello world
+			</li>
+			<li>
+				Hello world
+			</li>
+			<li>
+				Hello world
+			</li>
+			<li>
+				Hello world
+			</li>
+		</ul>
+	</div>
+	{{> EasySearch.Input index=filesIndex}}
+	<ul>
+		{{#EasySearch.Each index=filesIndex}}
+			<li>Name of the file: {{name}}</li>
+		{{/EasySearch.Each}}
+	</ul>
+
+	{{> EasySearch.LoadMore index=filesIndex}}
+
+  	{{#EasySearch.IfNoResults index=filesIndex}}
+    	<div class="no-results">No results found!</div>
+  	{{/EasySearch.IfNoResults}}
+</div>
+</template>

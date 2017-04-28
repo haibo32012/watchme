@@ -1,6 +1,13 @@
 <template name="replyComment">
+	<div class="container">
+		<li>
+			<span>{{userId}}:</span>
+			<span>{{body}}</span>
+			<span>{{DateToISO submitted}}</span>
+		</li>
 	<form>
 		<input type="text" name="replycommenttext">
 		<button type="submit" id="replycomment">submit</button>
 	</form>
+	</div>
 </template>
