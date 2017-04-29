@@ -10,6 +10,6 @@ Template.hotTopic.onCreated(function() {
 
 Template.hotTopic.helpers({
 	file: function() {
-		return files.find({"meta.view_count": {"$gte": 5}}, {sort: {"meta.created_at": -1}});
+		return files.find({"meta.view_count": {"$gte": 30}}, {sort: {"meta.created_at": -1}});
 	}
 });

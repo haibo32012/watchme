@@ -8,6 +8,12 @@ Template.comment.onCreated(function() {
 
 
 Template.comment.helpers({
+	authInProcess: function() {
+		return Meteor.loggingIn();
+	},
+	canShow: function() {
+		return !!Meteor.user();
+	},
 	commentsCount: function() {
 		let id = FlowRouter.getParam('_id');
 		return Comments.find({videoId: id}).count();

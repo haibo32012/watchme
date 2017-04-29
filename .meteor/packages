@@ -21,7 +21,7 @@ shell-server@0.2.3            # Server-side component of the `meteor shell` comm
 insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
 
 accounts-ui@1.1.9
-accounts-password@1.3.5
+accounts-password
 ostrio:files
 kadira:flow-router
 # iron:router
@@ -36,3 +36,4 @@ utilities:avatar
 accounts-github
 easy:search
 easysearch:elasticsearch
+useraccounts:bootstrap
