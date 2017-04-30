@@ -1,19 +1,20 @@
 <template name="comment">
-	<li>{{commentsCount}}</li>
-	
-		{{#if canShow}}
+	<li>
+		Comment({{commentsCount}}):
+	</li>
+		{{#if currentUser}}
 			<form name="commentform">
 				<div>
 					<input type="text" name="commentBody" id="commentText">
 					<button type="submit">Add Comment</button>
 				</div>
 			</form>
-		
+		{{else}}
+			<li>If you want comment,Please Login First<a href="/login">login</a></li>
+		{{/if}}
+		<hr>
 		<div>
 			{{> commentPost}}
 		</div>
-		{{else}}
-			<p>Please <a href="/login">login</a></p>
-		{{/if}}
 
 </template>

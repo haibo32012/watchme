@@ -16,3 +16,10 @@ Template.user.helpers({
 		return Meteor.user();
 	}
 });
+
+Template.user.events({
+	'click button': function(e) {
+		e.preventDefault();
+		AccountsTemplates.logout();
+	}
+});

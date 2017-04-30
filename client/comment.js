@@ -8,12 +8,7 @@ Template.comment.onCreated(function() {
 
 
 Template.comment.helpers({
-	authInProcess: function() {
-		return Meteor.loggingIn();
-	},
-	canShow: function() {
-		return !!Meteor.user();
-	},
+	
 	commentsCount: function() {
 		let id = FlowRouter.getParam('_id');
 		return Comments.find({videoId: id}).count();
@@ -23,14 +18,18 @@ Template.comment.helpers({
 Template.comment.events({
 	'submit form': function(e, template) {
 		e.preventDefault();
-
+		let userId = Meteor.userId();
+		if (userId === null) {
+			FlowRouter.go('/login');
+		}
 		let videoId = FlowRouter.getParam('_id');
 		let cursor = files.findOne({_id: videoId});
 		let videoOfUserId = cursor.userId;
 		let body = document.getElementById("commentText").value;
 		console.log(body);
 
-		let userId = Meteor.userId();
+		
+		
 		let comment = Comments.insert({
 			videoId: videoId,
 			userId: userId,
