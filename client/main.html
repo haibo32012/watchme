@@ -3,7 +3,7 @@
 <div class="container">
   {{#each file}}
   <a href="/post/{{_id}}">
-    <video proload='auto' width="320" height="240">
+    <video controls width="320" height="240" poster="/images/{{_id}}.png">
       <source src="{{link}}" type="{{type}}"/>
     </video>
     <li>{{name}}</li>
