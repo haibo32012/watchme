@@ -53,6 +53,10 @@ Template.videoPlay.helpers({
 Template.videoPlay.events({
 	'click #goodToggleButton': function() {
 		let userId = Meteor.userId();
+		if (userId === null) {
+			alert("Please login");
+			return;
+		}
 		let id = FlowRouter.getParam('_id');
 		let userLikeObject = UserLikeCollection.findOne({
 			userId: userId,
@@ -92,6 +96,10 @@ Template.videoPlay.events({
 	},
 	'click #badToggleButton': function() {
 		let userId = Meteor.userId();
+		if (userId === null) {
+			alert("Please login");
+			return ;
+		}
 		let id = FlowRouter.getParam('_id');
 		let userLikeObject = UserLikeCollection.findOne({
 			userId: userId,
@@ -130,6 +138,10 @@ Template.videoPlay.events({
 	},
 	'click #share': function() {
 		let userId = Meteor.userId();
+		if (userId === null) {
+			alert("Please login");
+			return ;
+		}
 		let id = FlowRouter.getParam('_id');
 		console.log(userId);
 		console.log(id);

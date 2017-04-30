@@ -14,6 +14,10 @@ Template.subscribe.helpers({
 Template.subscribe.events({
 'click #subscribe_button':function() {
 		let userId = Meteor.userId();
+		if (userId === null) {
+			alert("Please login");
+			return ;
+		}
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
 		let subscribed = file.userId;

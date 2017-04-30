@@ -25,6 +25,10 @@ Template.commentItem.helpers({
 Template.commentItem.events({
 	'click #likeComment': function() {
 		let userId = Meteor.userId();
+		if (userId === null) {
+			alert("Please login");
+			return ;
+		}
 		let commentId = this._id;
 		let cursor = likeComment.findOne({
 			userId: userId,
@@ -56,6 +60,10 @@ Template.commentItem.events({
 	},
 	'click #dislikeComment': function() {
 		let userId = Meteor.userId();
+		if (userId === null) {
+			alert("Please login");
+			return ;
+		}
 		let commentId = this._id;
 		let cursor = likeComment.findOne({
 			userId: userId,
