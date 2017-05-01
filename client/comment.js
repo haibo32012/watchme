@@ -43,6 +43,7 @@ Template.comment.events({
 			userId: userId,
 			videoId: videoId,
 			commentId: comment._id,
+			message: "comment on your video",
 			read: false
 		});
 	}

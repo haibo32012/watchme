@@ -45,6 +45,7 @@ Template.uploadForm.events({
                 notificationUserId: doc.userId,
                 userId: fileObj.userId,
                 videoId: fileObj._id,
+                message: "upload a new video",
                 read: false
               });
             });
