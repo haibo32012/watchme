@@ -10,11 +10,13 @@ Template.uploadForm.events({
   'change #fileInput': function(e, template) {
   	if (e.currentTarget.files && e.currentTarget.files[0]) {
       let video = e.currentTarget.files[0];
-      video.userId = Meteor.userId();
+      let user = Meteor.user();
+      video.userId = user._id;
   		let upload = files.insert({
 
   			file: video,
         meta: {
+          username: user.username,
           like_count: parseInt(0),
           dislike_count: parseInt(0),
           view_count: parseInt(0),

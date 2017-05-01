@@ -32,8 +32,9 @@ ostrio:flow-router-extra
 kadira:blaze-layout
 # okland:camera-ui
 supaseca:camera-ui
-utilities:avatar
+#utilities:avatar
 accounts-github
 easy:search
 easysearch:elasticsearch
 useraccounts:bootstrap
+#yourcontainer:meteor-avatar
