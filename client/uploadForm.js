@@ -17,6 +17,7 @@ Template.uploadForm.events({
   			file: video,
         meta: {
           username: user.username,
+          userPicture: user.profile.picture,
           like_count: parseInt(0),
           dislike_count: parseInt(0),
           view_count: parseInt(0),
