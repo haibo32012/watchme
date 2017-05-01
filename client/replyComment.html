@@ -1,13 +1,27 @@
 <template name="replyComment">
 	<div class="container">
 		<li>
-			<span>{{userId}}:</span>
-			<span>{{body}}</span>
-			<span>{{DateToISO submitted}}</span>
+			hello world
 		</li>
-	<form>
-		<input type="text" name="replycommenttext">
-		<button type="submit" id="replycomment">submit</button>
-	</form>
+		<li>
+			hello world
+		</li>
+		<li>
+			hello world
+		</li>
+		<li>
+			hello world
+		</li>
+		<li>
+			<span>{{comment.userId}}:</span>
+			<span>{{comment.body}}</span>
+			<span>{{DateToISO comment.submitted}}</span>
+		</li>
+		<form name="replyform">
+			<div>
+				<input type="text" name="replyCommentBody" id="replycommenttext">
+				<button type="submit">Add Reply</button>
+			</div>
+		</form>
 	</div>
 </template>

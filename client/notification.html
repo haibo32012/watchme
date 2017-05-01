@@ -1,5 +1,14 @@
 <template name="notification">
 <div class="container">
+<li>
+	hello world
+</li>
+<li>
+	hello world
+</li>
+<li>
+	hello world
+</li>
 {{#if notificationCount}}
 	{{#each notifications}}
 		{{> notificationItem}}
@@ -12,8 +21,8 @@
 
 <template name="notificationItem">
 	<li>
-		<a href="notificationPostPath">
-			<strong>{{userId}}</strong>commented on your post
+		<a href="/post/{{videoId}}">
+			<strong>{{userId}}:</strong>have a new message
 		</a>
 	</li>
 </template>

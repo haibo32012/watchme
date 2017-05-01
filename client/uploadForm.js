@@ -35,6 +35,19 @@ Template.uploadForm.events({
   				alert('Error during upload: ' + error);
   			} else {
   				alert('File "' + fileObj.name + '" successfully uploaded');
+          let subscribedObject = subscribeCollection.find({subscribedUserId: fileObj.userId});
+          if (subscribedObject !== undefined) {
+            subscribedObject.forEach(function(doc) {
+              Notifications.insert({
+                notificationUserId: doc.userId,
+                userId: fileObj.userId,
+                videoId: fileObj._id,
+                read: false
+              });
+            });
+          } else {
+            return ;
+          }
   			}
 
   		});

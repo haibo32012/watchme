@@ -12,7 +12,12 @@ Template.notification.helpers({
 
 Template.notificationItem.helpers({
 	notificationPostPath: function() {
-		return ;
+		var routeName = "/post";
+		var params = {
+			_id: this.videoId
+		};
+		var path = FlowRouter.path(routeName,params);
+		return path;
 	}
 });
 
