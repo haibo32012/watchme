@@ -3,9 +3,10 @@
 <div class="container">
   {{#each file}}
   <a href="/post/{{_id}}">
-    <video controls width="320" height="240" poster="/images/{{_id}}.png">
-      <source src="{{link}}" type="{{type}}"/>
+    <video id="{{_id}}" class="video-js" controls width="320" height="240">
+      <source src="{{fileURL this}}" type="{{type}}"/>
     </video>
+  
     <li>{{name}}</li>
   </a>
   <li>
@@ -22,10 +23,12 @@
       {{meta.view_count}}views
     </span>
   </li>
+  <hr>
   {{else}}
     Loading Video
   {{/each}}
   </div>
+  <script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
 </template>
 
 
