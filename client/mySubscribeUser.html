@@ -1,8 +1,18 @@
 <template name="mySubscribeUser">
+<li>
+	hello
+</li>
+<li>
+	hello
+</li>
+<li>
+	hello
+</li>
 <div class="container">
 	<li><h3>Subscribed users</h3></li>
+	<hr>
 	{{#each subscribeUser}}
-		<li><a href="/user/{{subscribedUserId}}">{{subscribedUserId}}</a></li>
+		<li><a href="/user/{{subscribedUserId}}">{{subscribedUserName}} {{subscribedUserId}}</a></li>
 	{{else}}
 
 	{{/each}}

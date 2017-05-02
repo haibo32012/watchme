@@ -13,7 +13,9 @@ Template.subscribe.helpers({
 
 Template.subscribe.events({
 'click #subscribe_button':function() {
-		let userId = Meteor.userId();
+		let user = Meteor.user;
+		let userId = user._id;
+		let username = user.username;
 		if (userId === null) {
 			alert("Please login");
 			return ;
@@ -21,6 +23,7 @@ Template.subscribe.events({
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
 		let subscribed = file.userId;
+		let subscribedUsername = file.meta.username;
 		//let subscribedId;
 		console.log(userId);
 		console.log(subscribed);
@@ -41,7 +44,8 @@ Template.subscribe.events({
 			} else {
 				let subscribedObject = {
 					userId: userId,
-					subscribedUserId: subscribed
+					subscribedUserId: subscribed,
+					subscribedUserName: subscribedUsername,
 				};
 				subscribeCollection.insert(subscribedObject);
 				Meteor.users.update(subscribed,
@@ -49,6 +53,14 @@ Template.subscribe.events({
 						'profile.subscribe_count': 1
 					}},
 				);
+				Notifications.insert({
+					notificationUserId: subscribed,
+					userId: userId,
+					username: username,
+					videoId: videoId,
+					message: "subscribed you, congratulations",
+					read: false
+				});
 			}
 		} else {
 			return;

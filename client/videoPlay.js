@@ -52,12 +52,17 @@ Template.videoPlay.helpers({
 
 Template.videoPlay.events({
 	'click #goodToggleButton': function() {
-		let userId = Meteor.userId();
+		let user = Meteor.user();
+		let userId = user._id;
+		let username = user.username;
 		if (userId === null) {
 			alert("Please login");
 			return;
 		}
 		let id = FlowRouter.getParam('_id');
+		let file = files.findOne({_id: id}) || {};
+		let subscribed = file.userId;
+
 		let userLikeObject = UserLikeCollection.findOne({
 			userId: userId,
 			videoId: id
@@ -92,15 +97,28 @@ Template.videoPlay.events({
 				//{validate: false},
 				{validate: false, filter: false}
 			);
+
+			Notifications.insert({
+					notificationUserId: subscribed,
+					userId: userId,
+					username: username,
+					videoId: id,
+					message: "like you video, congratulations!",
+					read: false
+			});
 		}
 	},
 	'click #badToggleButton': function() {
-		let userId = Meteor.userId();
+		let user = Meteor.user();
+		let userId = user._id;
+		let username = user.username;
 		if (userId === null) {
 			alert("Please login");
 			return ;
 		}
 		let id = FlowRouter.getParam('_id');
+		let file = files.findOne({_id: id}) || {};
+		let subscribed = file.userId;
 		let userLikeObject = UserLikeCollection.findOne({
 			userId: userId,
 			videoId: id
@@ -134,15 +152,28 @@ Template.videoPlay.events({
 				//{validate: false},
 				{validate: false, filter: false}
 			);
+
+			Notifications.insert({
+					notificationUserId: subscribed,
+					userId: userId,
+					username: username,
+					videoId: id,
+					message: "dislike you video, sorry!",
+					read: false
+			});
 		}
 	},
 	'click #share': function() {
-		let userId = Meteor.userId();
+		let user = Meteor.user();
+		let userId = user._id;
+		let username = user.username;
 		if (userId === null) {
 			alert("Please login");
 			return ;
 		}
 		let id = FlowRouter.getParam('_id');
+		let file = files.findOne({_id: id}) || {};
+		let subscribed = file.userId;
 		console.log(userId);
 		console.log(id);
 		let userShareObject = shareCollection.findOne({
@@ -171,6 +202,14 @@ Template.videoPlay.events({
 				//{validate: false},
 				{validate: false, filter: false}
 			);
+			Notifications.insert({
+					notificationUserId: subscribed,
+					userId: userId,
+					username: username,
+					videoId: id,
+					message: "share you video, congratulations!",
+					read: false
+			});
 		}
 	}
 });

@@ -18,13 +18,16 @@ Template.comment.helpers({
 Template.comment.events({
 	'submit form': function(e, template) {
 		e.preventDefault();
-		let userId = Meteor.userId();
+		let user = Meteor.user();
+		let userId = user._id;
+		let username = user.username;
 		if (userId === null) {
 			FlowRouter.go('/login');
 		}
 		let videoId = FlowRouter.getParam('_id');
 		let cursor = files.findOne({_id: videoId});
 		let videoOfUserId = cursor.userId;
+		let videoOfUsername = cursor.meta.username;
 		let body = document.getElementById("commentText").value;
 		console.log(body);
 
@@ -33,6 +36,7 @@ Template.comment.events({
 		let comment = Comments.insert({
 			videoId: videoId,
 			userId: userId,
+			username: username,
 			body: body,
 			submitted: new Date()
 		});
@@ -41,6 +45,7 @@ Template.comment.events({
 		Notifications.insert({
 			notificationUserId: videoOfUserId,
 			userId: userId,
+			username: username,
 			videoId: videoId,
 			commentId: comment._id,
 			message: "comment on your video",

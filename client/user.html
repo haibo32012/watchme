@@ -24,7 +24,7 @@
 				<span>{{user.username}}</span><span><a href="/user/review/{{user._id}}" class="glyphicon glyphicon-cog"></a></span><span><button>Logout</button></span>
 			</li>
 			<li>
-				{{user._id}}
+				{{user.username}}
 			</li>
 
 			<hr>
@@ -32,13 +32,13 @@
 
 		
 			<li>
-				<a href="/videos/{{user._id}}">myVideos</a>
+				<a href="/myvideolist">myVideos</a>
 			</li>
 			<li>
-				<a href="/subscribe/{{user._id}}">mySubscribe</a>
+				<a href="/mysubscribe">mySubscribe</a>
 			</li>
 			<li>
-				<a href="/share">myShare</a>
+				<a href="/myshare">myShare</a>
 			</li>
 			<li>
 				<a href="/notification">myNotification</a>

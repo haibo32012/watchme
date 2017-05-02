@@ -24,12 +24,19 @@ Template.commentItem.helpers({
 
 Template.commentItem.events({
 	'click #likeComment': function() {
-		let userId = Meteor.userId();
+		let user = Meteor.user();
+		let userId = user._id;
+		let username = user.username;
 		if (userId === null) {
 			alert("Please login");
 			return ;
 		}
+		let id = FlowRouter.getParam('_id');
+
 		let commentId = this._id;
+		let comment = Comments.findOne({_id: commentId}) || {};
+		let subscribed = comment.userId;
+
 		let cursor = likeComment.findOne({
 			userId: userId,
 			commentId: commentId
@@ -56,15 +63,30 @@ Template.commentItem.events({
 					likeCount: 1
 				}}
 			);
+			Notifications.insert({
+					notificationUserId: subscribed,
+					userId: userId,
+					username: username,
+					videoId: id,
+					message: "like you comment, congratulations!",
+					read: false
+			});
 		}
 	},
 	'click #dislikeComment': function() {
-		let userId = Meteor.userId();
+		let user = Meteor.user()
+		let userId = user._id;
+		let username = user.username;
 		if (userId === null) {
 			alert("Please login");
 			return ;
 		}
+		let id = FlowRouter.getParam('_id');
+
 		let commentId = this._id;
+		let comment = Comments.findOne({_id: commentId}) || {};
+		let subscribed = comment.userId;
+
 		let cursor = likeComment.findOne({
 			userId: userId,
 			commentId: commentId
@@ -91,6 +113,14 @@ Template.commentItem.events({
 					dislikeCount: 1
 				}}
 			);
+			Notifications.insert({
+					notificationUserId: subscribed,
+					userId: userId,
+					username: username,
+					videoId: id,
+					message: "dislike you comment, sorry!",
+					read: false
+			});
 		}
 	}
 });

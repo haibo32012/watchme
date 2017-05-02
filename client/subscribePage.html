@@ -2,16 +2,30 @@
 <div class="container">
   {{#each file}}
   <a href="/post/{{_id}}">
-    <video width="320" height="240">
-      <source src="{{link}}" type="{{type}}"/>
+    <video id="{{_id}}" class="video-js" controls width="320" height="240">
+      <source src="{{fileURL this}}" type="{{type}}"/>
     </video>
+  
     <li>{{name}}</li>
   </a>
-  <a href="/user/{{userId}}">
-    <li>{{userId}}</li>
-  </a>
+  <li>
+    <span>
+    <img src="{{meta.userPicture}}" class="img-circle">
+      
+    </span>
+    <span>
+    <a href="/user/{{userId}}">
+      {{meta.username}}
+    </a>
+    </span>
+    <span>
+      {{meta.view_count}}views
+    </span>
+  </li>
+  <hr>
   {{else}}
     Loading Video
   {{/each}}
   </div>
+  <script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
 </template>

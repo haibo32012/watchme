@@ -6,15 +6,17 @@
 
 <template name="commentItem">
 		<li>
-			<span>{{userId}}:</span>
+			<span>{{username}}:</span>
 			<span>{{body}}</span>
 			<span>{{DateToISO submitted}}</span>
 		</li>
 		<li>
 			<span><submit id="likeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit></span>
 			<span><submit id="dislikeComment" class="glyphicon glyphicon-thumbs-down">({{dislikeCount}})</submit></span>
+		</li>	
+			
+		<!--
 			<span><a href="/replycomment/{{_id}}">reply</a></span>
-		</li>
 		<li>
 			<span>
 				{{replyComment.userId}}:
@@ -26,4 +28,5 @@
 				{{replyComment.submitTime}}
 			</span>
 		</li>
+		-->
 </template>
