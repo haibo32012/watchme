@@ -15,3 +15,13 @@ Template.myVideoList.helpers({
 		return files.find({userId: id}) || {};
 	}
 });
+
+Template.myVideoList.events({
+	'click #deleteVideo': function() {
+		Comments.remove({videoId: this._id});
+		shareCollection.remove({videoId: this._id});
+		UserLikeCollection.remove({videoId: this._id});
+		likeComment.remove({videoId: this._id});
+		files.remove(this._id);
+	}
+});

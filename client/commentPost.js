@@ -55,6 +55,7 @@ Template.commentItem.events({
 		} else {
 			likeComment.insert({
 				userId: userId,
+				videoId: id,
 				commentId: commentId,
 				isLike: true
 			});
@@ -106,6 +107,7 @@ Template.commentItem.events({
 			likeComment.insert({
 				userId: userId,
 				commentId: commentId,
+				videoId: id,
 				isDislike: true
 			});
 			Comments.update(commentId,
