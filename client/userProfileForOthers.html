@@ -1,17 +1,30 @@
 <template name="userProfileForOthers">
 	<div class="container">
-	<li>
-		hello
-	</li>
-	<li>
-		hello
-	</li>
-	<li>
-		hello
-	</li>
-	<li>
-		<span><a href="/videos/{{userId}}">videos</a></span>
-		<span><a href="/userabout/{{userId}}">about</a></span>
-	</li>
+		<li>
+			hello
+		</li>
+		<li>
+			hello
+		</li>
+		<li>
+			hello
+		</li>
+		<div>
+			{{> userabout}}
+		</div>
+		<hr>
+		<div>
+			{{> userVideoList}}
+		</div>
+	</div>
+</template>
+<template name="userabout">
+	<div>
+		<li>
+			User Introduction
+		</li>
+		<p>
+			{{user.profile.about}}
+		</p>
 	</div>
 </template>

@@ -6,3 +6,10 @@
 li {
 	list-style-type: none;
 }
+.load-more{
+  text-align:center;
+  background:#eee;
+  border: 1px solid #ddd;
+  display:block;
+  padding: 10px;
+}
