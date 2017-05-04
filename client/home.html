@@ -1,6 +1,5 @@
-
-<template name="main">
-<div class="container">
+<template name="home">
+	<div class="container">
   {{#each file}}
   <a href="/post/{{_id}}">
     <video id="{{_id}}" class="video-js" controls width="320" height="240">
@@ -27,8 +26,13 @@
   {{else}}
     Loading Video
   {{/each}}
+  {{#if Template.subscriptionsReady}}
+    {{#if hasMorePosts}}
+      <a class="load-more" href="#">Load More</a>
+    {{/if}}
+  {{else}}
+    <div class="loading">{{> spinner}}</div>
+  {{/if}}
   </div>
   <script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
 </template>
-
-

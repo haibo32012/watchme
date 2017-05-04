@@ -1,3 +1,4 @@
+import { ReactiveVar } from 'meteor/reactive-var';
 import { Meteor } from 'meteor/meteor';
 import './videoPlay.html';
 import './comment.js';
@@ -6,13 +7,32 @@ import './subscribe.js';
 import './relatedList.js';
 
 Template.videoPlay.onCreated(function() {
-	let self = this;
-	self.autorun(function() {
-		let id = FlowRouter.getParam('_id');
-		self.subscribe('files.all', id);
-		self.subscribe('userWatchedCollection.all');
-		self.subscribe('shareCollection.all');
+	let instance = this;
+	let id = FlowRouter.getParam('_id');
+
+	instance.loaded = new ReactiveVar(0);
+	instance.limit = new ReactiveVar(5);
+	instance.autorun(function() {
+		instance.subscribe('userWatchedCollection.all');
+		instance.subscribe('shareCollection.all');
+		// get the limit
+		var limit = instance.limit.get();
+		console.log("Asking for " + limit + " post...");
+		//subscribe to the posts publication
+		var subscription = instance.subscribe('files.all', limit);
+		// if subscription is ready, set limit to newLimit
+		if (subscription.ready()) {
+			console.log("> Received " + limit + " posts. \n\n");
+			instance.loaded.set(limit);
+		} else {
+			console.log("> subscription is not ready yet. \n\n");
+		}
 	});
+
+	// cursor
+	instance.posts = function() {
+		return files.findOne({_id: id},{limit: instance.loaded.get()});
+	}
 });
 
 Template.videoPlay.onRendered(function() {
@@ -44,9 +64,7 @@ Template.videoPlay.onRendered(function() {
 
 Template.videoPlay.helpers({
 	file: function() {
-		let id = FlowRouter.getParam('_id');
-		let file = files.findOne({_id: id}) || {};
-		return file;
+		return Template.instance().posts();
 	}
 });
 

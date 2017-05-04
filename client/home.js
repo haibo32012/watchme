@@ -1,8 +1,8 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 import {Meteor} from 'meteor/meteor';
-import './subscribePage.html';
+import './home.html';
 
-Template.subscribePage.onCreated(function() {
+Template.home.onCreated(function() {
 	// 1.Initialization
 	var instance = this;
 	let userId = Meteor.userId();
@@ -14,6 +14,7 @@ Template.subscribePage.onCreated(function() {
 	// will re-run when the "limit" reactive variables changes
 	instance.autorun(function() {
 		instance.subscribe('subscribeuser.all');
+		instance.subscribe('shareCollection.all');
 		// get the limit
 		var limit = instance.limit.get();
 		console.log("Asking for " + limit +" posts...");
@@ -31,13 +32,15 @@ Template.subscribePage.onCreated(function() {
 	let subscribeObject = subscribeCollection.find({userId: userId});
 	const subscribedUserIdList = subscribeObject.map(doc => doc.subscribedUserId);
 	console.log(subscribedUserIdList);
+	const shareObject = shareCollection.find({userId: {$in: subscribedUserIdList}});
+	const videoIdList = shareObject.map(doc => doc.videoId);
 	// cursor
 	instance.posts = function() {
-		return files.find({userId: {$in: subscribedUserIdList}}, {sort: {"meta.created_at": -1}, limit: instance.loaded.get()});
+		return files.find({_id: {$in: videoIdList}}, {sort: {"meta.created_at": -1}, limit: instance.loaded.get()});
 	}
 });
 
-Template.subscribePage.helpers({
+Template.home.helpers({
 	file: function() {
 		return Template.instance().posts();
 		//let userId = Meteor.userId();
@@ -50,9 +53,7 @@ Template.subscribePage.helpers({
 	}
 });
 
-
-
-Template.subscribePage.events({
+Template.home.events({
 	'click .load-more': function(event, instance) {
 		event.preventDefault();
 		// get current value for limit, i.e. how many posts are currently displayed
