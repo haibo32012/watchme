@@ -4,10 +4,10 @@ import './userVideoList.html';
 Template.userVideoList.onCreated(function() {
 	// 1.Initialization
 	var instance = this;
-	let id = FlowRouter.getParam('userId');
+	let id = FlowRouter.getParam('_id');
 	// initialize the reactive variables
 	instance.loaded = new ReactiveVar(0);
-	instance.limit = new ReactiveVar(2);
+	instance.limit = new ReactiveVar(5);
 	// will re-run when the "limit" reactive variables changes
 	instance.autorun(function() {
 		// get the limit

@@ -4,14 +4,14 @@ import './userVideoList.js';
 
 Template.userabout.helpers({
 	user: function() {
-		let userId = FlowRouter.getParam('userId');
+		let userId = FlowRouter.getParam('_id');
 		return Meteor.users.findOne({_id: userId});
 	}
 });
 
 Template.userProfileForOthers.helpers({
 	userId: function() {
-		console.log(FlowRouter.getParam('userId'));
+		console.log(FlowRouter.getParam('_id'));
 		return FlowRouter.getParam('userId');
 	}
 });

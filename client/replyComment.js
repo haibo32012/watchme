@@ -19,7 +19,7 @@ Template.replyComment.helpers({
 });
 
 Template.replyComment.events({
-	'click #replyform': function() {
+	'click .reply-comment': function() {
 		//e.stopPropagation();
 		e.preventDefault();
 		let commentId = FlowRouter.getParam('_id');

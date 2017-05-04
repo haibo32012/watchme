@@ -13,13 +13,24 @@
 			{{> userabout}}
 		</div>
 		<hr>
+		<li>User Video List</li>
+		<hr>
 		<div>
 			{{> userVideoList}}
 		</div>
+		
 	</div>
 </template>
 <template name="userabout">
 	<div>
+		<li>
+			<span>
+				<img src="{{user.profile.picture}}" class="img-circle">
+			</span>
+			<span>
+				{{user.username}}
+			</span>
+		</li>
 		<li>
 			User Introduction
 		</li>

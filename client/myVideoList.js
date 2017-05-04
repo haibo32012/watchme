@@ -22,6 +22,7 @@ Template.myVideoList.events({
 		shareCollection.remove({videoId: this._id});
 		UserLikeCollection.remove({videoId: this._id});
 		likeComment.remove({videoId: this._id});
+		userWatchedCollection.remove({videoId: this._id});
 		files.remove(this._id);
 	}
 });
