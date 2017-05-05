@@ -1,12 +1,13 @@
 <template name="home">
 	<div class="container">
+
   {{#each file}}
   <a href="/post/{{_id}}">
     <video id="{{_id}}" class="video-js" controls width="320" height="240">
       <source src="{{fileURL this}}" type="{{type}}"/>
     </video>
   
-    <li>{{name}}</li>
+    <li>{{extless name}}</li>
   </a>
   <li>
     <span>

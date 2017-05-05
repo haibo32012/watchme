@@ -43,6 +43,7 @@ Template.uploadForm.events({
             subscribedObject.forEach(function(doc) {
               Notifications.insert({
                 notificationUserId: doc.userId,
+                username: fileObj.meta.username,
                 userId: fileObj.userId,
                 videoId: fileObj._id,
                 message: "upload a new video",

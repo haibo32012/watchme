@@ -8,11 +8,12 @@ import './relatedList.js';
 
 Template.videoPlay.onCreated(function() {
 	let instance = this;
-	let id = FlowRouter.getParam('_id');
+	let id;
 
 	instance.loaded = new ReactiveVar(0);
 	instance.limit = new ReactiveVar(5);
 	instance.autorun(function() {
+		id = FlowRouter.getParam('_id');
 		instance.subscribe('userWatchedCollection.all');
 		instance.subscribe('shareCollection.all');
 		// get the limit
