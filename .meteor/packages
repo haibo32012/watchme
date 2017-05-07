@@ -39,3 +39,4 @@ easysearch:elasticsearch
 useraccounts:bootstrap
 #yourcontainer:meteor-avatar
 sacha:spin
+momentjs:moment

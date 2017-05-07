@@ -16,7 +16,7 @@ Template.comment.helpers({
 });
 
 Template.comment.events({
-	'submit form': function(e, template) {
+	'submit #commentform': function(e, template) {
 		e.preventDefault();
 		let user = Meteor.user();
 		let userId = user._id;
@@ -24,6 +24,7 @@ Template.comment.events({
 		if (userId === null) {
 			FlowRouter.go('/login');
 		}
+		let userpicture = user.profile.picture;
 		let videoId = FlowRouter.getParam('_id');
 		let cursor = files.findOne({_id: videoId});
 		let videoOfUserId = cursor.userId;
@@ -37,6 +38,7 @@ Template.comment.events({
 			videoId: videoId,
 			userId: userId,
 			username: username,
+			userPicture: userpicture,
 			body: body,
 			submitted: new Date()
 		});

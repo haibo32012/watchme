@@ -1,10 +1,23 @@
 <template name="uploadForm">
 <div class="container">
+<li>
+	hello world
+</li>
+<li>
+	hello world
+</li>
+<li>
+	hello world
+</li>
   <h2>Upload</h2>
   <div>
- 
-    <input type="file" id="fileInput">
-
+  {{#if currentFile}}
+    {{#with currentFile}}
+      <span id="progress">{{progress}}%</span>
+    {{/with}}
+  {{else}}
+    <input id="fileInput" type="file" />
+  {{/if}}
   </div>
 </div>
 </template>

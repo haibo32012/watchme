@@ -19,8 +19,22 @@ Template.commentPost.helpers({
 	}
 });
 
-Template.commentItem.helpers({
+Template.commentItem.onCreated(function() {
+	this.showReply = new ReactiveVar(true);
+})
 
+Template.commentItem.helpers({
+	showReplyForm: function() {
+		return Template.instance().showReply.get();
+	},
+	haveReplyComment: function() {
+		let commentId = this._id;
+		return replyComment.findOne({commentId: commentId});
+	},
+	replyComments: function() {
+
+		return replyComment.find({commentId: this._id});
+	}
 });
 
 Template.commentItem.events({
@@ -70,7 +84,7 @@ Template.commentItem.events({
 					userId: userId,
 					username: username,
 					videoId: id,
-					message: "like you comment, congratulations!",
+					message: " like you comment, congratulations!",
 					read: false
 			});
 		}
@@ -121,13 +135,55 @@ Template.commentItem.events({
 					userId: userId,
 					username: username,
 					videoId: id,
-					message: "dislike you comment, sorry!",
+					message: " dislike you comment, sorry!",
 					read: false
 			});
 		}
 	},
-	'click #replyButtom': function() {
-		
+	'click #replyButtom': function(e, template) {
+		e.preventDefault();
+		template.showReply.set(false);
+	},
+	'submit #replyForm': function(e, template) {
+		e.preventDefault();
+		template.showReply.set(true);
+		let replyText = e.target.replyCommentText.value;
+		console.log(replyText);
+
+		let user = Meteor.user();
+		let userId = user._id;
+		let username = user.username;
+		let commentId = this._id;
+		let userpicture = user.profile.picture;
+		let replycomment = replyComment.insert({
+			userId: userId,
+			userName: username,
+			commentId: commentId,
+			userPicture: userpicture,
+			body: replyText,
+			submitted: new Date()
+		});
+		console.log(replycomment);
+		let commentObject = Comments.findOne({_id: commentId}) || {};
+		let id = FlowRouter.getParam('_id');
+		Notifications.insert({
+			notificationUserId: commentObject.userId,
+			userId: userId,
+			username: username,
+			videoId: id,
+			commentId: commentId,
+			message: " reply your comment",
+			read: false
+		});
 	}
 });
+
+Template.replyCommentPart.events({
+	'click #replyLikeComment': function() {
+
+	},
+	'click #replyDislikeComment': function() {
+
+	}
+})
 

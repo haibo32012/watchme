@@ -28,7 +28,7 @@ Template.hotTopic.onCreated(function() {
 
 	// cursor
 	instance.posts = function() {
-		return files.find({"meta.view_count": {"$gte": 20}}, {sort: {"meta.created_at": -1}, limit: instance.loaded.get()});
+		return files.find({"meta.view_count": {"$gte": 0}}, {sort: {"meta.created_at": -1}, limit: instance.loaded.get()});
 	}
 
 	//let self = this;
