@@ -9,24 +9,28 @@
   	 	<li>{{name}}</li>
   	 	<hr>
   	 	<form id="videoUpdate">
-  	 		<label>The Introduction Of This Video</label>
+        <li>
+          <h3>Type Of The Video</h3>
+        </li>
+        <hr>
   	 		<li>
-  	 			<textarea id="videoIntroduction" name="videoIntro"></textarea>
+  	 			<span><input type="radio" checked="checked" name="priceTypeOfVideo" value="freeVideo"/>free</span>
   	 		</li>
   	 		<hr>
   	 		<li>
-  	 			<span><input type="radio" checked="checked" name="priceTypeOfVideo" value="freeVideo" />free</span>
+  	 			<span><input type="radio" name="priceTypeOfVideo" value="donateVideo"/>donate</span>
   	 		</li>
   	 		<hr>
   	 		<li>
-  	 			<span><input type="radio" name="priceTypeOfVideo" value="donateVideo" />donate</span>
+  	 			<span><input type="radio" name="priceTypeOfVideo" value="bargainVideo"/>bargain</span>
+  	 			<span><label>Price:</label><input type="text" value="0" name="videoPrice" /></span>
   	 		</li>
   	 		<hr>
-  	 		<li>
-  	 			<span><input type="radio" name="priceTypeOfVideo" value="bargainVideo" />bargain</span>
-  	 			<span><label>Price:</label><input type="text" value="1" name="videoPrice" /></span>
-  	 		</li>
-  	 		<hr>
+        <label>The Introduction Of This Video</label>
+        <li>
+          <textarea id="videoIntroduction" name="videoIntro" width="320" height="240"></textarea>
+        </li>
+        <button type="submit">submit</button>
     	</form>
   	{{/with}}
 {{else}}

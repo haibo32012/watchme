@@ -12,9 +12,20 @@
   <h2>Upload</h2>
   <div>
   {{#if currentFile}}
+  
     {{#with currentFile}}
       <span id="progress">{{progress}}%</span>
+      <span>{{estimateSpeed}}</span>
+      <span>{{estimateTime}}</span>
     {{/with}}
+    
+    <li>hello world</li>
+    {{#if file}}
+      {{#with file}}
+        <a href="/upload/{{_id}}">update</a>
+      {{/with}}
+    {{else}}
+    {{/if}}
   {{else}}
     <input id="fileInput" type="file" />
   {{/if}}

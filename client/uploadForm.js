@@ -3,17 +3,22 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import '../lib/collection.js';
 
-
+var filesize = require("filesize");
 import './uploadForm.html'
 
 Template.uploadForm.onCreated(function() {
   this.currentFile = new ReactiveVar(false); 
+  
+  this.videoFile = new ReactiveVar(false);
 });
 
 Template.uploadForm.helpers({
   currentFile: function() {
-    Template.instance().currentFile.get();
+    return Template.instance().currentFile.get();
     //console.log(Template.instance().currentFile.get());
+  },
+  file: function() {
+    return Template.instance().videoFile.get();
   }
 });
 
@@ -42,7 +47,11 @@ Template.uploadForm.events({
 
   		upload.on('start', function() {
         template.currentFile.set(this);
-        console.log(this);
+        //template.uploading.set(true);
+        //console.log(this);
+        //console.log(this.estimateTime);
+        //let bit = filesize(Math.ceil(this.estimateSpeed), {bits: true}) + '/s';
+        //console.log(bit);
   		});
 
       upload.on('error', function(error) {
@@ -54,7 +63,8 @@ Template.uploadForm.events({
   			if (error) {
   				alert('Error during upload: ' + error);
   			} else {
-  				alert('File "' + fileObj.name + '" successfully uploaded');
+          template.videoFile.set(fileObj);
+  				//alert('File "' + fileObj.name + '" successfully uploaded');
           let subscribedObject = subscribeCollection.find({subscribedUserId: fileObj.userId});
           if (subscribedObject !== undefined) {
             subscribedObject.forEach(function(doc) {
@@ -63,7 +73,7 @@ Template.uploadForm.events({
                 username: fileObj.meta.username,
                 userId: fileObj.userId,
                 videoId: fileObj._id,
-                message: "upload a new video",
+                message: " upload a new video",
                 read: false
               });
             });
@@ -71,8 +81,10 @@ Template.uploadForm.events({
             return ;
           }
 
+          //FlowRouter.go('/Update/fileObj._id');
   			}
         //template.currentFile.set(false);
+        //template.uploading.set(false);
   		});
 
   		upload.start();
