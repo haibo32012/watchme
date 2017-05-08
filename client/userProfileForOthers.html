@@ -9,9 +9,16 @@
 		<li>
 			hello
 		</li>
-		<div>
-			{{> userabout}}
-		</div>
+		<li>
+			{{user.username}}
+		</li>
+		<nav>
+			<a href="#">upload</a>
+			<a href="/userShare">SharedVideos</a>
+			<a href="/userLike">LikedVideos</a>
+			<a href="/userAbout/{{user._id}}">About</a>
+		</nav>
+		
 		<hr>
 		<li>User Video List</li>
 		<hr>
@@ -22,6 +29,17 @@
 	</div>
 </template>
 <template name="userabout">
+	<div class="container">
+		<li>
+			hello
+		</li>
+		<li>
+			hello
+		</li>
+		<li>
+			hello
+		</li>
+	
 	<div>
 		<li>
 			<span>
@@ -37,5 +55,6 @@
 		<p>
 			{{user.profile.about}}
 		</p>
+	</div>
 	</div>
 </template>

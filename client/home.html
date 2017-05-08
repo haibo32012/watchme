@@ -4,7 +4,7 @@
   {{#each file}}
   <a href="/post/{{_id}}">
     <video id="{{_id}}" class="video-js" controls width="320" height="240">
-      <source src="{{fileURL this}}" type="{{type}}"/>
+      <source src="{{link}}" type="{{type}}"/>
     </video>
   
     <li>{{extless name}}</li>
