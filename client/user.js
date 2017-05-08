@@ -14,6 +14,21 @@ Template.user.onCreated(function() {
 Template.user.helpers({
 	user: function() {
 		return Meteor.user();
+	},
+	myVideosCount: function() {
+		return files.find({userId: Meteor.userId()}).count();
+	},
+	mySubscribedUserCount: function() {
+		return subscribeCollection.find({userId: Meteor.userId()}).count();
+	},
+	mySharedVideosCount: function() {
+		return shareCollection.find({userId: Meteor.userId()}).count();
+	},
+	myLikedVideosCount: function() {
+		return UserLikeCollection.find({userId: Meteor.userId(), isLike: true}).count();
+	},
+	notificationsCount: function() {
+		return Notifications.find({notificationUserId: Meteor.userId(), read: false}).count();
 	}
 });
 

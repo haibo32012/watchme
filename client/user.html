@@ -32,20 +32,34 @@
 
 		
 			<li>
-				<a href="/myvideolist">myVideos</a>
+				<span><a href="/myvideolist">myVideos</a></span>
+				<span>{{myVideosCount}}</span>
 			</li>
+			<hr>
 			<li>
-				<a href="/mysubscribe">mySubscribe</a>
+				<span><a href="/mysubscribe">mySubscribe</a></span>
+				<span>{{mySubscribedUserCount}}</span>
 			</li>
+			<hr>
 			<li>
-				<a href="/myshare">myShare</a>
+				<span><a href="/myshare">myShare</a></span>
+				<span>{{mySharedVideosCount}}</span>
 			</li>
+			<hr>
 			<li>
-				<a href="/notification">myNotification</a>
+				<span><a href="/myLikedVideos">myLikedVideos</a></span>
+				<span>{{myLikedVideosCount}}</span>
 			</li>
+			<hr>
+			<li>
+				<span><a href="/notification">myNotification</a></span>
+				<span>{{notificationsCount}}</span>
+			</li>
+			<hr>
 			<li>
 				<a href="/myWatchedVideos">myWatchedVideos</a>
 			</li>
+			<hr>
 			{{else}}
 				<p>Please <a href="/login">login</a></p>
 			{{/if}}

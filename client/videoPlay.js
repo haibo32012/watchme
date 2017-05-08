@@ -4,7 +4,7 @@ import './videoPlay.html';
 import './comment.js';
 
 import './subscribe.js';
-import './relatedList.js';
+
 
 Template.videoPlay.onCreated(function() {
 	let instance = this;
