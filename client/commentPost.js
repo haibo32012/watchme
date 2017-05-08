@@ -178,12 +178,108 @@ Template.commentItem.events({
 	}
 });
 
-Template.replyCommentPart.events({
+Template.replyCommentItem.events({
 	'click #replyLikeComment': function() {
+		let user = Meteor.user();
+		let userId = user._id;
+		let username = user.username;
+		if (userId === null) {
+			alert("Please login");
+			return ;
+		}
+		let id = FlowRouter.getParam('_id');
 
+		let replyCommentId = this._id;
+		let replyCommentObject = replyComment.findOne({_id: replyCommentId}) || {};
+		let subscribed = replyCommentObject.userId;
+
+		let cursor = replyLikeComment.findOne({
+			userId: userId,
+			replyCommentId: replyCommentId
+		});
+		if (cursor !== undefined) {
+			if (cursor.isDislike === true) {
+				return ;
+			} else {
+				replyLikeComment.remove(cursor._id);
+				replyComment.update(replyCommentId,
+					{$inc: {
+						likeCount: -1
+					}}
+				);
+			}
+		} else {
+			replyLikeComment.insert({
+				userId: userId,
+				videoId: id,
+				replyCommentId: replyCommentId,
+				isLike: true
+			});
+			replyComment.update(replyCommentId,
+				{$inc: {
+					likeCount: 1
+				}}
+			);
+			Notifications.insert({
+					notificationUserId: subscribed,
+					userId: userId,
+					username: username,
+					videoId: id,
+					message: " like you comment, congratulations!",
+					read: false
+			});
+		}
 	},
 	'click #replyDislikeComment': function() {
+		let user = Meteor.user();
+		let userId = user._id;
+		let username = user.username;
+		if (userId === null) {
+			alert("Please login");
+			return ;
+		}
+		let id = FlowRouter.getParam('_id');
 
+		let replyCommentId = this._id;
+		let replyCommentObject = replyComment.findOne({_id: replyCommentId}) || {};
+		let subscribed = replyCommentObject.userId;
+
+		let cursor = replyLikeComment.findOne({
+			userId: userId,
+			replyCommentId: replyCommentId
+		});
+		if (cursor !== undefined) {
+			if (cursor.isLike === true) {
+				return ;
+			} else {
+				replyLikeComment.remove(cursor._id);
+				replyComment.update(replyCommentId,
+					{$inc: {
+						dislikeCount: -1
+					}}
+				);
+			}
+		} else {
+			replyLikeComment.insert({
+				userId: userId,
+				videoId: id,
+				replyCommentId: replyCommentId,
+				isDislike: true
+			});
+			replyComment.update(replyCommentId,
+				{$inc: {
+					dislikeCount: 1
+				}}
+			);
+			Notifications.insert({
+					notificationUserId: subscribed,
+					userId: userId,
+					username: username,
+					videoId: id,
+					message: " dislike you comment, sorry!",
+					read: false
+			});
+		}
 	}
 })
 

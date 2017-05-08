@@ -34,7 +34,7 @@
 			</span>
 			<span>
 			{{#each replyComments}}
-				{{> replyCommentPart}}
+				{{> replyCommentItem}}
 			{{/each}}
 				
 			</span>
@@ -42,22 +42,8 @@
 		{{else}}
 		{{/if}}
 		<hr>
-		
-		<!--	
-		<li>
-			<span>
-				{{replyComment.userId}}:
-			</span>
-			<span>
-				{{replyComment.body}}
-			</span>
-			<span>
-				{{replyComment.submitTime}}
-			</span>
-		</li>
-		-->
 </template>
-<template name="replyCommentPart">
+<template name="replyCommentItem">
 	<li>
 		<span>
 			<img src="{{userPicture}}" class="img-circle">

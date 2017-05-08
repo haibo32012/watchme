@@ -122,7 +122,7 @@ Template.videoPlay.events({
 					userId: userId,
 					username: username,
 					videoId: id,
-					message: "like you video, congratulations!",
+					message: " like you video, congratulations!",
 					read: false
 			});
 		}
@@ -177,7 +177,7 @@ Template.videoPlay.events({
 					userId: userId,
 					username: username,
 					videoId: id,
-					message: "dislike you video, sorry!",
+					message: " dislike you video, sorry!",
 					read: false
 			});
 		}
@@ -226,7 +226,7 @@ Template.videoPlay.events({
 					userId: userId,
 					username: username,
 					videoId: id,
-					message: "share you video, congratulations!",
+					message: " share you video, congratulations!",
 					read: false
 			});
 		}
