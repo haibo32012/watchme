@@ -10,30 +10,30 @@ Template.videoPlay.onCreated(function() {
 	let instance = this;
 	let id;
 
-	instance.loaded = new ReactiveVar(0);
-	instance.limit = new ReactiveVar(5);
+	//instance.loaded = new ReactiveVar(0);
+	//instance.limit = new ReactiveVar(5);
 	instance.autorun(function() {
 		id = FlowRouter.getParam('_id');
 		instance.subscribe('userWatchedCollection.all');
 		instance.subscribe('shareCollection.all');
 		// get the limit
-		var limit = instance.limit.get();
-		console.log("Asking for " + limit + " post...");
+		//var limit = instance.limit.get();
+		//console.log("Asking for " + limit + " post...");
 		//subscribe to the posts publication
-		var subscription = instance.subscribe('files.all', limit);
+		instance.subscribe('files', id);
 		// if subscription is ready, set limit to newLimit
-		if (subscription.ready()) {
-			console.log("> Received " + limit + " posts. \n\n");
-			instance.loaded.set(limit);
-		} else {
-			console.log("> subscription is not ready yet. \n\n");
-		}
+		//if (subscription.ready()) {
+		//	console.log("> Received " + limit + " posts. \n\n");
+		//	instance.loaded.set(limit);
+		//} else {
+		//	console.log("> subscription is not ready yet. \n\n");
+		//}
 	});
 
 	// cursor
-	instance.posts = function() {
-		return files.findOne({_id: id},{limit: instance.loaded.get()});
-	}
+	//instance.posts = function() {
+		//return files.findOne({_id: id},{limit: instance.loaded.get()});
+	//}
 });
 
 Template.videoPlay.onRendered(function() {
@@ -65,7 +65,8 @@ Template.videoPlay.onRendered(function() {
 
 Template.videoPlay.helpers({
 	file: function() {
-		return Template.instance().posts();
+		let id = FlowRouter.getParam('_id');
+		return files.findOne({_id: id});
 	}
 });
 

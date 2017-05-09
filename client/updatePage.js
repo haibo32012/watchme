@@ -20,11 +20,51 @@ Template.updatePage.helpers({
 Template.updatePage.events({
 	'submit #videoUpdate': function(e) {
 		e.preventDefault();
+		let id = FlowRouter.getParam('_id');
+		// view type of the video
+		let viewType = document.querySelector('input[name="viewTypeOfVideo"]:checked').value;
+		files.update({_id: id},
+			{$set: {
+				'meta.viewType': viewType
+			}}
+		);
+
+		// type of the video price
 		let videoIntroduction = e.target.videoIntro.value;
 		console.log(videoIntroduction);
 		let priceType = document.querySelector('input[name="priceTypeOfVideo"]:checked').value;
 		console.log(priceType);
 		let priceValue = e.target.videoPrice.value;
 		console.log(priceValue);
+		
+		files.update({_id: id},
+			{$set: {
+				'meta.introduction': videoIntroduction
+			}}
+		);
+		switch(priceType) {
+			case 'freeVideo':
+				files.update({_id: id},
+					{$set: {
+						'meta.priceType': 'freeVideo'
+					}}
+				);
+				break;
+			case 'donateVideo':
+				files.update({_id: id},
+					{$set: {
+						'meta.priceType': 'donateVideo'
+					}}
+				);
+				break;
+			case 'bargainVideo':
+				files.update({_id: id},
+					{$set: {
+						'meta.priceType': 'bargainVideo',
+						'meta.price': priceValue
+					}}
+				);
+				break;
+		}
 	}
 });

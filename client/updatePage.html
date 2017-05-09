@@ -10,17 +10,24 @@
   	 	<hr>
   	 	<form id="videoUpdate">
         <li>
-          <h3>Type Of The Video</h3>
+          <span><h4>The video for viewer type</h4></span>
+          <span><input type="radio" checked="checked" name="viewTypeOfVideo" value="adult"/>adult people</span>
+          <span><input type="radio" name="viewTypeOfVideo" value="all"/>all People</span>
+          
         </li>
         <hr>
+        <li>
+          <h4>Type Of The Video</h4>
+        </li>
+     
   	 		<li>
   	 			<span><input type="radio" checked="checked" name="priceTypeOfVideo" value="freeVideo"/>free</span>
   	 		</li>
-  	 		<hr>
+  	 	
   	 		<li>
   	 			<span><input type="radio" name="priceTypeOfVideo" value="donateVideo"/>donate</span>
   	 		</li>
-  	 		<hr>
+  	 	
   	 		<li>
   	 			<span><input type="radio" name="priceTypeOfVideo" value="bargainVideo"/>bargain</span>
   	 			<span><label>Price:</label><input type="text" value="0" name="videoPrice" /></span>
