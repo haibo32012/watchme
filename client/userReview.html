@@ -9,7 +9,8 @@
 	<li>
 		hello
 	</li>
-	<li>ChangeProfile</li>
+	<li>Profile</li>
+	<hr>
 	<div>
 		<li>
 			<span>
@@ -20,25 +21,33 @@
 			</span>
 		</li>
 		<li>
-			<span>
-				ALIAS:
-			</span>
-			<span>
-				{{user.profile.name}}
-			</span>
-			<span>
-				<button id="profileName">edit</button>
-			</span>
+			<span>{{user.username}}</span>
 		</li>
 	</div>
+	<hr>
 	<div>
+		<form id="userIntroduction">
+		<li>
+			<span>Type Of Age:  &nbsp;&nbsp;&nbsp;</span>
+			<span><input type="radio" checked="checked" name="userTypeOfAge" value="adult"/>adult people</span>&nbsp;&nbsp;&nbsp;
+          <span><input type="radio" name="userTypeOfAge" value="child"/>under 18</span>
+		</li>	
+		<hr>
 		<li>
 			USER INTRODUCTION
 		</li>
-		{{user.profile.about}}
+		<p>
+			{{user.profile.introduction}}
+		</p>
 		<li>
-			<button id="profileAbout" class="glyphicon glyphicon-edit"></button>
+			<textarea name="userProfileIntroduction" placeholder="say something about yourself">
+			
+			</textarea>
 		</li>
+		<li>
+			<button type="submit">submit</button>
+		</li>
+		</form>
 	</div>
 </div>
 </template>

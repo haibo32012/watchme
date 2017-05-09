@@ -31,10 +31,29 @@ Template.userReview.events({
 			});
 		});
 	},
-	'click profileName': function(e, template) {
+	'submit #userIntroduction': function(e, template) {
 		e.preventDefault();
+		let userId = Meteor.userId();
+		let ageType = document.querySelector('input[name="userTypeOfAge"]:checked').value;
+		let userIntroduction = e.target.userProfileIntroduction.value;
+		if (ageType === "adult") {
+			Meteor.users.update(userId,
+				{$set: 
+					{'profile.isAdult': true}
+				}
+			);
+		} else {
+			Meteor.users.update(userId,
+				{$set: 
+					{'profile.isAdult': false}
+				}
+			);
+		}
+		
+		Meteor.users.update(userId,
+			{$set: 
+				{'profile.introduction': userIntroduction}
+			}
+		);
 	},
-	'click profileAbout': function(e, template) {
-		e.preventDefault();
-	}
 });

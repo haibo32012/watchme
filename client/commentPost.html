@@ -33,9 +33,9 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			</span>
 			<span>
-			{{#each replyComments}}
-				{{> replyCommentItem}}
-			{{/each}}
+			    {{#each replyComments}}
+				   {{> replyCommentItem}}
+			    {{/each}}
 				
 			</span>
 		</li>
@@ -48,12 +48,12 @@
 		<span>
 			<img src="{{userPicture}}" class="img-circle">
 		</span>
-		<span>{{userName}}:</span>
-		<span>{{body}}</span>
-		<span>{{DateToISO submitted}}</span>
+		<span>    {{userName}}:</span>
+		<span>    {{body}}</span>
+		<span>    {{DateToISO submitted}}</span>
 	</li>
 	<li>
-		<span><submit id="replyLikeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit></span>
-		<span><submit id="replyDislikeComment" class="glyphicon glyphicon-thumbs-down">({{dislikeCount}})</submit></span>
+		<span><submit id="replyLikeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit>     </span>
+		<span>      <submit id="replyDislikeComment" class="glyphicon glyphicon-thumbs-down">({{dislikeCount}})</submit></span>
 	</li>
 </template>
