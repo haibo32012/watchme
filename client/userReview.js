@@ -35,6 +35,7 @@ Template.userReview.events({
 		e.preventDefault();
 		let userId = Meteor.userId();
 		let ageType = document.querySelector('input[name="userTypeOfAge"]:checked').value;
+		console.log(ageType);
 		let userIntroduction = e.target.userProfileIntroduction.value;
 		if (ageType === "adult") {
 			Meteor.users.update(userId,

@@ -64,6 +64,22 @@ Template.videoPlay.onRendered(function() {
 });
 
 Template.videoPlay.helpers({
+
+	isTypeForAll: function() {
+		let id = FlowRouter.getParam('_id');
+		let user = Meteor.user();
+		let file = files.findOne({_id: id}) || {};
+		if (file.meta.viewType === 'all') {
+			return true;
+		} else {
+			if (user.profile.isAdult) {
+					return true;
+			} else {
+					return false;
+			}
+		}
+		
+	},
 	file: function() {
 		let id = FlowRouter.getParam('_id');
 		return files.findOne({_id: id});

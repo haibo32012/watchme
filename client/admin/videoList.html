@@ -12,16 +12,34 @@
 		<li>
 			hello
 		</li>
-	<table>
+		{{#if canshow}}
+		<li>
+			<span>Video Count: </span>
+			<span>{{videoCount}}</span>
+		</li>
+	<table border="1">
 		<tr>
-			<th>videoname</th>
+			<th>Number</th>
+			<th>videoId</th>
+			<th>videoName</th>
 			<th>username</th>
+			<th>operator</th>
 		</tr>
+		{{#each file}}
 		<tr>
 			<td></td>
-			<td></td>
+			<td>{{_id}}</td>
+			<td>{{name}}</td>
+			<td>{{meta.username}}</td>
+			<td><button id="userOperator">Operator</button></td>
 		</tr>
+		{{/each}}
 	</table>
+		{{else}}
+			<li>
+				<p>You have no right to visit this page.</p>
+			</li>
+		{{/if}}
 	</div>
 
 </template>

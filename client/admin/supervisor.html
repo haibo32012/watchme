@@ -13,10 +13,15 @@
 		<li>
 			hello
 		</li>
-	
+	{{#if canshow}}
 	<nav>
 		<a href="/supervisor/users">User List</a>
 		<a href="/supervisor/videos">Video List</a>
 	</nav>
+	{{else}}
+		<li>
+			<p>You have no right to visit this page.</p>
+		</li>
+	{{/if}}
 	</div>
 </template>
