@@ -43,7 +43,7 @@ Template.comment.events({
 			submitted: new Date()
 		});
 		console.log("comment success");
-		body = '';
+		e.target.commentBody.value = "";
 		Notifications.insert({
 			notificationUserId: videoOfUserId,
 			userId: userId,

@@ -33,7 +33,7 @@ Template.commentItem.helpers({
 	},
 	replyComments: function() {
 
-		return replyComment.find({commentId: this._id});
+		return replyComment.find({commentId: this._id}, {sort: {submitted: -1}});
 	}
 });
 

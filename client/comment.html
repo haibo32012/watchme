@@ -3,10 +3,10 @@
 		Comment({{commentsCount}}):
 	</li>
 		{{#if currentUser}}
-			<form id="commentform">
+			<form id="commentform" class="form-inline">
 				<div>
-					<input type="text" name="commentBody" id="commentText">
-					<button type="submit">Add Comment</button>
+					<input type="text" name="commentBody" id="commentText" class="form-control">
+					<!--<button type="submit" class="btn btn-default">Add Comment</button>-->
 				</div>
 			</form>
 		{{else}}

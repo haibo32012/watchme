@@ -29,8 +29,16 @@
 		<form id="userIntroduction">
 		<li>
 			<span>Type Of Age:  &nbsp;&nbsp;&nbsp;</span>
-			<span><input type="radio" checked="checked" name="userTypeOfAge" value="adult"/>adult people</span>&nbsp;&nbsp;&nbsp;
-          <span><input type="radio" name="userTypeOfAge" value="child"/>under 18</span>
+			<span>
+				<label>
+					<input type="radio" checked="checked" name="userTypeOfAge" value="adult"/>adult people
+				</label>
+			</span>&nbsp;&nbsp;&nbsp;
+         	<span>
+          		<label>
+          			<input type="radio" name="userTypeOfAge" value="child"/>under 18
+          		</label>
+            </span>
 		</li>	
 		<hr>
 		<li>
@@ -43,7 +51,7 @@
 			<textarea name="userProfileIntroduction" placeholder="say something about yourself"></textarea>
 		</li>
 		<li>
-			<button type="submit">submit</button>
+			<button class="btn btn-default" type="submit">submit</button>
 		</li>
 		</form>
 	</div>

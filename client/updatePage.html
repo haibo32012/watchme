@@ -11,8 +11,16 @@
   	 	<form id="videoUpdate">
         <li>
           <span><h4>The video for viewer type</h4></span>
-          <span><input type="radio" checked="checked" name="viewTypeOfVideo" value="adult"/>adult people</span>
-          <span><input type="radio" name="viewTypeOfVideo" value="all"/>all People</span>
+          <span>
+            <label>
+              <input type="radio" checked="checked" name="viewTypeOfVideo" value="adult"/>adult people
+            </label>
+          </span>
+          <span>
+            <label>
+              <input type="radio" name="viewTypeOfVideo" value="all"/>all People
+            </label>
+          </span>
           
         </li>
         <hr>
@@ -21,23 +29,41 @@
         </li>
      
   	 		<li>
-  	 			<span><input type="radio" checked="checked" name="priceTypeOfVideo" value="freeVideo"/>free</span>
+  	 			<span>
+            <label>
+              <input type="radio" checked="checked" name="priceTypeOfVideo" value="freeVideo"/>free
+            </label>
+          </span>
   	 		</li>
   	 	
   	 		<li>
-  	 			<span><input type="radio" name="priceTypeOfVideo" value="donateVideo"/>donate</span>
+  	 			<span>
+            <label>
+              <input type="radio" name="priceTypeOfVideo" value="donateVideo"/>donate
+            </label>
+          </span>
   	 		</li>
   	 	
   	 		<li>
-  	 			<span><input type="radio" name="priceTypeOfVideo" value="bargainVideo"/>bargain</span>
-  	 			<span><label>Price:</label><input type="text" value="0" name="videoPrice" /></span>
+  	 			<span>
+            <label>
+              <input type="radio" name="priceTypeOfVideo" value="bargainVideo"/>bargain
+            </label>
+          </span>
+  	 			<span>
+            <div class="input-group">
+              <div class="input-group-addon">¥</div>
+              <input type="text" class="form-control" value="0" name="videoPrice" />
+              <div class="input-group-addon">.00</div>
+            </div>
+          </span>
   	 		</li>
   	 		<hr>
         <label>The Introduction Of This Video</label>
         <li>
           <textarea id="videoIntroduction" name="videoIntro"></textarea>
         </li>
-        <button type="submit">submit</button>
+        <button class="btn btn-default" type="submit">submit</button>
     	</form>
   	{{/with}}
 {{else}}

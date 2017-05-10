@@ -18,10 +18,10 @@
 			<li>
 				
 				<span>
-					<img src="{{user.profile.picture}}" class="img-circle">
+					<img src="{{user.profile.picture}}" class="img-circle img-response">
 				</span>
 			
-				<span>{{user.username}}</span><span><a href="/user/review/{{user._id}}" class="glyphicon glyphicon-cog"></a></span><span><button>Logout</button></span>
+				<span>{{user.username}}</span><span><a href="/user/review/{{user._id}}" class="glyphicon glyphicon-cog"></a></span><span><button class="btn btn-default">Logout</button></span>
 			</li>
 			<li>
 				{{user.username}}
@@ -32,26 +32,31 @@
 
 		
 			<li>
+				<span class="glyphicon glyphicon-expand"></span>
 				<span><a href="/myvideolist">myVideos</a></span>
 				<span>{{myVideosCount}}</span>
 			</li>
 			<hr>
 			<li>
+				<span class=" glyphicon glyphicon-eye-open"></span>
 				<span><a href="/mysubscribe">mySubscribe</a></span>
 				<span>{{mySubscribedUserCount}}</span>
 			</li>
 			<hr>
 			<li>
+				<span class="glyphicon glyphicon-share-alt"></span>
 				<span><a href="/myshare">myShare</a></span>
 				<span>{{mySharedVideosCount}}</span>
 			</li>
 			<hr>
 			<li>
+				<span class="glyphicon glyphicon-thumbs-up"></span>
 				<span><a href="/myLikedVideos">myLikedVideos</a></span>
 				<span>{{myLikedVideosCount}}</span>
 			</li>
 			<hr>
 			<li>
+				<span class="glyphicon glyphicon-bell"></span>
 				<span><a href="/notification">myNotification</a></span>
 				<span>{{notificationsCount}}</span>
 			</li>
