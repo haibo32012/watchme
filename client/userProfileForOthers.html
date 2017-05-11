@@ -12,12 +12,12 @@
 		<li>
 			{{user.username}}
 		</li>
-		<nav>
-			<a href="#">upload</a>
-			<a href="/userShare">SharedVideos</a>
-			<a href="/userLike">LikedVideos</a>
-			<a href="/userAbout/{{user._id}}">About</a>
-		</nav>
+		<ul class="nav nav-tabs">
+			<li><a href="#" class="active">uploaded</a></li>
+			<li><a href="/userShare">Shared</a></li>
+			<li><a href="/userLike">Liked</a></li>
+			<li><a href="/userAbout/{{user._id}}">About</a></li>
+		</ul>
 		
 		<hr>
 		<li>User Video List</li>
