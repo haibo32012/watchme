@@ -1,31 +1,16 @@
 <template name="uploadForm">
 <div class="container">
-<li>
-	hello world
-</li>
-<li>
-	hello world
-</li>
-<li>
-	hello world
-</li>
+
   <h2>Upload</h2>
   <div>
-  {{#if currentFile}}
+  {{#if uploading}}
   
-    {{#with currentFile}}
-      <span id="progress">{{progress}}%</span>
-      <span>{{estimateSpeed}}</span>
-      <span>{{estimateTime}}</span>
-    {{/with}}
     
-    <li>hello world</li>
-    {{#if file}}
-      {{#with file}}
-        <a href="/upload/{{_id}}">update</a>
-      {{/with}}
-    {{else}}
-    {{/if}}
+      <span id="progress">#{status.progress}%</span>
+      <span>{{status.estimateSpeed}}</span>
+      <span>{{status.estimateTime}}</span>
+    
+   
   {{else}}
     <input id="fileInput" type="file" />
   {{/if}}

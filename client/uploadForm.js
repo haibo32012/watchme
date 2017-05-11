@@ -8,17 +8,28 @@ import './uploadForm.html'
 
 Template.uploadForm.onCreated(function() {
   this.currentFile = new ReactiveVar(false); 
-  
+  this.uploading = new ReactiveVar(false);
   this.videoFile = new ReactiveVar(false);
 });
 
 Template.uploadForm.helpers({
-  currentFile: function() {
-    return Template.instance().currentFile.get();
+  status: function() {
+    const uploadFile = Template.instance().currentFile.get();
+    let progress = uploadFile.progress;
+    let estimateSpeed = uploadFile.estimateSpeed;
+    let estimateTime = uploadFile.estimateTime;
+    return {
+      progress: progress,
+      estimateSpeed: estimateSpeed,
+      estimateTime: estimateTime
+    };
     //console.log(Template.instance().currentFile.get());
   },
   file: function() {
     return Template.instance().videoFile.get();
+  },
+  uploading: function() {
+    return Template.instance().uploading.get();
   }
 });
 
@@ -47,7 +58,7 @@ Template.uploadForm.events({
 
   		upload.on('start', function() {
         template.currentFile.set(this);
-        //template.uploading.set(true);
+        template.uploading.set(true);
         //console.log(this);
         //console.log(this.estimateTime);
         //let bit = filesize(Math.ceil(this.estimateSpeed), {bits: true}) + '/s';
@@ -84,7 +95,7 @@ Template.uploadForm.events({
           //FlowRouter.go('/Update/fileObj._id');
   			}
         //template.currentFile.set(false);
-        //template.uploading.set(false);
+        template.uploading.set(false);
   		});
 
   		upload.start();
