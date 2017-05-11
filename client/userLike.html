@@ -1,0 +1,49 @@
+<template name="userLike">
+	<div class="container">
+  <li>
+      <span>
+        <img src="{{user.profile.picture}}" class="img-circle img-response">
+      </span>
+      <span>
+        {{user.username}}
+      </span>
+    </li>
+    <ul class="nav nav-tabs">
+      <li><a href="/user/{{user._id}}" class="active">uploaded</a></li>
+      <li><a href="/userShare/{{user._id}}">Shared</a></li>
+      <li><a href="/userLike/{{user._id}}">Liked</a></li>
+      <li><a href="/userAbout/{{user._id}}">About</a></li>
+    </ul>
+    
+    <hr>
+    <li>User Liked Videos</li>
+    <hr>
+  {{#each file}}
+  <a href="/post/{{_id}}">
+    <video id="{{_id}}" class="video-js"  width="140" height="70">
+      <source src="{{link}}" type="{{type}}"/>
+    </video>
+  
+    <li>{{name}}</li>
+  </a>
+  <li>
+    <span>
+    <img src="{{meta.userPicture}}" class="img-circle">
+      
+    </span>
+    <span>
+    <a href="/user/{{userId}}">
+      {{meta.username}}
+    </a>
+    </span>
+    <span>
+      {{meta.view_count}}views
+    </span>
+  </li>
+  <hr>
+  {{else}}
+    Loading Video
+  {{/each}}
+  </div>
+  <script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
+</template>

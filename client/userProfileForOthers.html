@@ -1,21 +1,18 @@
 <template name="userProfileForOthers">
 	<div class="container">
+	
 		<li>
-			hello
-		</li>
-		<li>
-			hello
-		</li>
-		<li>
-			hello
-		</li>
-		<li>
-			{{user.username}}
+			<span>
+				<img src="{{user.profile.picture}}" class="img-circle img-response">
+			</span>
+			<span>
+				{{user.username}}
+			</span>
 		</li>
 		<ul class="nav nav-tabs">
-			<li><a href="#" class="active">uploaded</a></li>
-			<li><a href="/userShare">Shared</a></li>
-			<li><a href="/userLike">Liked</a></li>
+			<li><a href="/user/{{user._id}}" class="active">Uploaded</a></li>
+			<li><a href="/userShare/{{user._id}}">Shared</a></li>
+			<li><a href="/userLike/{{user._id}}">Liked</a></li>
 			<li><a href="/userAbout/{{user._id}}">About</a></li>
 		</ul>
 		
@@ -31,14 +28,21 @@
 <template name="userabout">
 	<div class="container">
 		<li>
-			hello
+			<span>
+				<img src="{{user.profile.picture}}" class="img-circle img-response">
+			</span>
+			<span>
+				{{user.username}}
+			</span>
 		</li>
-		<li>
-			hello
-		</li>
-		<li>
-			hello
-		</li>
+		<ul class="nav nav-tabs">
+			<li><a href="/user/{{user._id}}" class="active">uploaded</a></li>
+			<li><a href="/userShare/{{user._id}}">Shared</a></li>
+			<li><a href="/userLike/{{user._id}}">Liked</a></li>
+			<li><a href="/userAbout/{{user._id}}">About</a></li>
+		</ul>
+		
+		<hr>
 	
 	<div>
 		<li>
