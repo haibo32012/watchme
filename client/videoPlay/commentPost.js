@@ -85,6 +85,7 @@ Template.commentItem.events({
 					username: username,
 					videoId: id,
 					message: " like you comment, congratulations!",
+					submitted: new Date(),
 					read: false
 			});
 		}
@@ -136,6 +137,7 @@ Template.commentItem.events({
 					username: username,
 					videoId: id,
 					message: " dislike you comment, sorry!",
+					submitted: new Date(),
 					read: false
 			});
 		}
@@ -173,6 +175,7 @@ Template.commentItem.events({
 			videoId: id,
 			commentId: commentId,
 			message: " reply your comment",
+			submitted: new Date(),
 			read: false
 		});
 	}
@@ -226,6 +229,7 @@ Template.replyCommentItem.events({
 					username: username,
 					videoId: id,
 					message: " like you comment, congratulations!",
+					submitted: new Date(),
 					read: false
 			});
 		}
@@ -277,6 +281,7 @@ Template.replyCommentItem.events({
 					username: username,
 					videoId: id,
 					message: " dislike you comment, sorry!",
+					submitted: new Date(),
 					read: false
 			});
 		}

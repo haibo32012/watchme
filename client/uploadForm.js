@@ -1,7 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import '../lib/collection.js';
+//import '../lib/collection.js';
 
 var filesize = require("filesize");
 import './uploadForm.html'
@@ -85,6 +85,7 @@ Template.uploadForm.events({
                 userId: fileObj.userId,
                 videoId: fileObj._id,
                 message: " upload a new video",
+                submitted: new Date(),
                 read: false
               });
             });
@@ -96,6 +97,7 @@ Template.uploadForm.events({
   			}
         //template.currentFile.set(false);
         template.uploading.set(false);
+        $('#uploadModal').modal('show');
   		});
 
   		upload.start();

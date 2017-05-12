@@ -59,6 +59,7 @@ Template.subscribe.events({
 					username: username,
 					videoId: videoId,
 					message: "subscribed you, congratulations",
+					submitted: new Date(),
 					read: false
 				});
 			}

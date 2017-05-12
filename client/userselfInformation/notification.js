@@ -3,7 +3,7 @@ import './notification.html';
 
 Template.notification.helpers({
 	notifications: function() {
-		return Notifications.find({notificationUserId: Meteor.userId(), read: false});
+		return Notifications.find({notificationUserId: Meteor.userId(), read: false}, {sort: {submitted: -1}});
 	},
 	notificationCount: function() {
 		return Notifications.find({notificationUserId: Meteor.userId(), read: false}).count();

@@ -56,5 +56,7 @@ Template.userReview.events({
 				{'profile.introduction': userIntroduction}
 			}
 		);
+
+		$('#userReviewModal').modal('show');
 	},
 });

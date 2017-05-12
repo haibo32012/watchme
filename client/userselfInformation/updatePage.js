@@ -66,5 +66,6 @@ Template.updatePage.events({
 				);
 				break;
 		}
+		$('#videoReviewModal').modal('show');
 	}
 });

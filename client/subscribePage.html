@@ -2,7 +2,7 @@
 <div class="container">
   {{#each file}}
   <a href="/post/{{_id}}">
-    <video id="{{_id}}" class="video-js" controls width="320" height="240">
+    <video id="{{_id}}" class="video-js" controls width="320" height="240" poster="{{_id}}.png">
       <source src="{{link}}" type="{{type}}"/>
     </video>
   

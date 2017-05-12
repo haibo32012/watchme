@@ -51,6 +51,7 @@ Template.comment.events({
 			videoId: videoId,
 			commentId: comment._id,
 			message: " comment on your video",
+			submitted: new Date(),
 			read: false
 		});
 	}
