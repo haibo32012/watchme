@@ -1,8 +1,8 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 import {Meteor} from 'meteor/meteor';
-import './home.html';
+import './subsusershare.html';
 
-Template.home.onCreated(function() {
+Template.subsusershare.onCreated(function() {
 	// 1.Initialization
 	var instance = this;
 	let userId = Meteor.userId();
@@ -10,7 +10,7 @@ Template.home.onCreated(function() {
 	
 	// initialize the reactive variables
 	instance.loaded = new ReactiveVar(0);
-	instance.limit = new ReactiveVar(5);
+	instance.limit = new ReactiveVar(10);
 	// will re-run when the "limit" reactive variables changes
 	instance.autorun(function() {
 		instance.subscribe('subscribeuser.all');
@@ -40,7 +40,7 @@ Template.home.onCreated(function() {
 	}
 });
 
-Template.home.helpers({
+Template.subsusershare.helpers({
 	file: function() {
 		return Template.instance().posts();
 		//let userId = Meteor.userId();
@@ -53,7 +53,7 @@ Template.home.helpers({
 	}
 });
 
-Template.home.events({
+Template.subsusershare.events({
 	'click .load-more': function(event, instance) {
 		event.preventDefault();
 		// get current value for limit, i.e. how many posts are currently displayed

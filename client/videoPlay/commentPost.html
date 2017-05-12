@@ -9,13 +9,13 @@
 			<span>
 					<img src="{{userPicture}}" class="img-circle">
 			</span>
-			<span>{{username}}:</span>
+			<span><a href="/user/{{userId}}">{{username}}</a>:</span>
 			<span>{{body}}</span>
 			<span>{{DateToISO submitted}}</span>
 		</li>
 		<li>
-			<span><submit id="likeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit></span>
-			<span><submit id="dislikeComment" class="glyphicon glyphicon-thumbs-down">({{dislikeCount}})</submit></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><submit id="likeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit></span>&nbsp;&nbsp;&nbsp;
+			<span><submit id="dislikeComment" class="glyphicon glyphicon-thumbs-down">({{dislikeCount}})</submit></span>&nbsp;&nbsp;&nbsp;
 			{{#if showReplyForm}}
 			<span><submit id="replyButtom" class="glyphicon glyphicon-comment"></submit></span>
 			{{else}}
@@ -26,12 +26,6 @@
 		</li>
 		{{#if haveReplyComment}}
 		<li>
-			<span>
-				hello, this is reply:
-			</span>
-			<span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			</span>
 			<span>
 			    {{#each replyComments}}
 				   {{> replyCommentItem}}
@@ -45,15 +39,15 @@
 </template>
 <template name="replyCommentItem">
 	<li>
-		<span>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
 			<img src="{{userPicture}}" class="img-circle">
 		</span>
-		<span>    {{userName}}:</span>
+		<span><a href="/user/{{userId}}">{{userName}}</a>:</span>
 		<span>    {{body}}</span>
 		<span>    {{DateToISO submitted}}</span>
 	</li>
 	<li>
-		<span><submit id="replyLikeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit>     </span>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><submit id="replyLikeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit>     </span>&nbsp;&nbsp;&nbsp;
 		<span>      <submit id="replyDislikeComment" class="glyphicon glyphicon-thumbs-down">({{dislikeCount}})</submit></span>
 	</li>
 </template>

@@ -8,7 +8,7 @@ Template.hotTopic.onCreated(function() {
 
 	// initialize the reactive variables
 	instance.loaded = new ReactiveVar(0);
-	instance.limit = new ReactiveVar(5);
+	instance.limit = new ReactiveVar(10);
 	// will re-run when the "limit" reactive variables changes
 	instance.autorun(function() {
 		// get the limit
