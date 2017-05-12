@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import {check} from 'meteor/check';
 import { ReactiveVar } from 'meteor/reactive-var';
 import './commentPost.html';
 
@@ -150,6 +151,7 @@ Template.commentItem.events({
 		e.preventDefault();
 		template.showReply.set(true);
 		let replyText = e.target.replyCommentText.value;
+		check(replyText, String);
 		console.log(replyText);
 
 		let user = Meteor.user();

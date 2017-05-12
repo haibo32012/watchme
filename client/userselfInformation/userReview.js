@@ -1,5 +1,6 @@
 import { MeteorCameraUI } from 'meteor/supaseca:camera-ui';
 import { Meteor } from 'meteor/meteor';
+import {check} from 'meteor/check';
 import './userReview.html';
 
 Template.userReview.helpers({
@@ -37,6 +38,7 @@ Template.userReview.events({
 		let ageType = document.querySelector('input[name="userTypeOfAge"]:checked').value;
 		console.log(ageType);
 		let userIntroduction = e.target.userProfileIntroduction.value;
+		check(userIntroduction, String);
 		if (ageType === "adult") {
 			Meteor.users.update(userId,
 				{$set: 

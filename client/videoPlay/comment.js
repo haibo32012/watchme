@@ -1,4 +1,5 @@
 import {Meteor} from 'meteor/meteor';
+import {check} from 'meteor/check';
 import './comment.html';
 import './commentPost.js';
 
@@ -30,6 +31,7 @@ Template.comment.events({
 		let videoOfUserId = cursor.userId;
 		let videoOfUsername = cursor.meta.username;
 		let body = document.getElementById("commentText").value;
+		check(body, String);
 		console.log(body);
 
 		

@@ -67,12 +67,13 @@ Template.uploadForm.events({
 
       upload.on('error', function(error) {
         console.log(error);
-
+        //template.uploading.set(false);
       });
 
   		upload.on('end', function(error, fileObj) {
   			if (error) {
-  				alert('Error during upload: ' + error);
+  				alert(error);
+          //template.uploading.set(false);
   			} else {
           template.videoFile.set(fileObj);
   				//alert('File "' + fileObj.name + '" successfully uploaded');
@@ -94,10 +95,11 @@ Template.uploadForm.events({
           }
 
           //FlowRouter.go('/Update/fileObj._id');
+           $('#uploadModal').modal('show');
   			}
         //template.currentFile.set(false);
         template.uploading.set(false);
-        $('#uploadModal').modal('show');
+       
   		});
 
   		upload.start();

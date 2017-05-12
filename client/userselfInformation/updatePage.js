@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import {check} from 'meteor/check';
 import './updatePage.html';
 
 Template.updatePage.helpers({
@@ -35,6 +36,7 @@ Template.updatePage.events({
 		let priceType = document.querySelector('input[name="priceTypeOfVideo"]:checked').value;
 		console.log(priceType);
 		let priceValue = e.target.videoPrice.value;
+		check(priceValue, Number);
 		console.log(priceValue);
 		
 		files.update({_id: id},
