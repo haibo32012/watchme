@@ -13,7 +13,7 @@
 			<span>{{body}}</span>
 			<span>{{DateToISO submitted}}</span>
 		</li>
-		<li>
+		<li style="margin-top: 5px">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><submit id="likeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit></span>&nbsp;&nbsp;&nbsp;
 			<span><submit id="dislikeComment" class="glyphicon glyphicon-thumbs-down">({{dislikeCount}})</submit></span>&nbsp;&nbsp;&nbsp;
 			{{#if showReplyForm}}
@@ -25,7 +25,7 @@
 			{{/if}}
 		</li>
 		{{#if haveReplyComment}}
-		<li>
+		<li style="margin-top: 10px">
 			<span>
 			    {{#each replyComments}}
 				   {{> replyCommentItem}}
@@ -39,15 +39,15 @@
 </template>
 <template name="replyCommentItem">
 	<li>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
 			<img src="{{userPicture}}" class="img-circle">
 		</span>
 		<span><a href="/user/{{userId}}">{{userName}}</a>:</span>
 		<span>    {{body}}</span>
 		<span>    {{DateToISO submitted}}</span>
 	</li>
-	<li>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><submit id="replyLikeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit>     </span>&nbsp;&nbsp;&nbsp;
+	<li style="margin-top: 5px">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><submit id="replyLikeComment" class="glyphicon glyphicon-thumbs-up">({{likeCount}}) </submit>     </span>&nbsp;&nbsp;&nbsp;
 		<span>      <submit id="replyDislikeComment" class="glyphicon glyphicon-thumbs-down">({{dislikeCount}})</submit></span>
 	</li>
 </template>

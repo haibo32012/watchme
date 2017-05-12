@@ -22,6 +22,7 @@ Template.comment.events({
 		let user = Meteor.user();
 		let userId = user._id;
 		let username = user.username;
+
 		if (userId === null) {
 			FlowRouter.go('/login');
 		}
@@ -50,9 +51,10 @@ Template.comment.events({
 			notificationUserId: videoOfUserId,
 			userId: userId,
 			username: username,
+			userpicture: userpicture,
 			videoId: videoId,
 			commentId: comment._id,
-			message: " comment on your video",
+			message: " comment on your video: " + body,
 			submitted: new Date(),
 			read: false
 		});

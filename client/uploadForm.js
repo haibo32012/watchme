@@ -83,6 +83,7 @@ Template.uploadForm.events({
               Notifications.insert({
                 notificationUserId: doc.userId,
                 username: fileObj.meta.username,
+                userpicture: fileObj.meta.userPicture,
                 userId: fileObj.userId,
                 videoId: fileObj._id,
                 message: " upload a new video",

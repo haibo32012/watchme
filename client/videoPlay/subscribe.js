@@ -20,10 +20,12 @@ Template.subscribe.events({
 			alert("Please login");
 			return ;
 		}
+		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
 		let subscribed = file.userId;
 		let subscribedUsername = file.meta.username;
+		let subscribedPicture = file.meta.userPicture;
 		//let subscribedId;
 		console.log(userId);
 		console.log(subscribed);
@@ -46,6 +48,7 @@ Template.subscribe.events({
 					userId: userId,
 					subscribedUserId: subscribed,
 					subscribedUserName: subscribedUsername,
+					subscribedPicture: subscribedPicture
 				};
 				subscribeCollection.insert(subscribedObject);
 				Meteor.users.update(subscribed,
@@ -57,8 +60,9 @@ Template.subscribe.events({
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
+					userpicture: userpicture,
 					videoId: videoId,
-					message: "subscribed you, congratulations",
+					message: " subscribed you, congratulations",
 					submitted: new Date(),
 					read: false
 				});

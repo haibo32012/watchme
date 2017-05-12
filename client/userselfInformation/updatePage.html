@@ -3,10 +3,10 @@
 {{#if canShow}}
 	{{#with file.with}}
 
- 		<video  width="320" height="240" controls="controls">
+ 		<video  class="video-js" controls poster="{{_id}}.png">
     		<source src="{{link}}" type="{{type}}"/>
         </video>
-  	 	<li>{{name}}</li>
+  	 	<li style="margin-top: 20px">{{extless name}}</li>
   	 	<hr>
   	 	<form id="videoUpdate">
         <li>
@@ -85,4 +85,5 @@
       </div>
     </div>  
   </div>
+  <script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
 </template>

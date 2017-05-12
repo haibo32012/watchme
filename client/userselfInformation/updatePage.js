@@ -36,7 +36,7 @@ Template.updatePage.events({
 		let priceType = document.querySelector('input[name="priceTypeOfVideo"]:checked').value;
 		console.log(priceType);
 		let priceValue = e.target.videoPrice.value;
-		check(priceValue, Number);
+		check(priceValue, String);
 		console.log(priceValue);
 		
 		files.update({_id: id},
@@ -69,5 +69,6 @@ Template.updatePage.events({
 				break;
 		}
 		$('#videoReviewModal').modal('show');
+		e.target.videoPrice = '0';
 	}
 });

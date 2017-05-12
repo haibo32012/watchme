@@ -5,7 +5,7 @@ Template.myVideoList.onCreated(function() {
 	let self = this;
 	self.autorun(function() {
 		let id = Meteor.userId();
-		self.subscribe('files.all', id);
+		self.subscribe('files', id);
 	});
 });
 

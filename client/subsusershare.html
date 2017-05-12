@@ -3,7 +3,7 @@
 
   {{#each file}}
   <a href="/post/{{_id}}">
-    <video id="{{_id}}" class="video-js" poster="{{_id}}.png">
+    <video id="{{_id}}"  poster="{{_id}}.png">
       <source src="{{link}}" type="{{type}}"/>
     </video>
   
@@ -19,7 +19,7 @@
       {{meta.username}}
     </a>
     </span>
-    <span>
+    <span style="margin-left: 10px">
       {{meta.view_count}}views
     </span>
   </li>
@@ -35,5 +35,4 @@
     <div class="loading">{{> spinner}}</div>
   {{/if}}
   </div>
-  <script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
 </template>

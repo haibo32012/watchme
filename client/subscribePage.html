@@ -2,11 +2,11 @@
 <div class="container">
   {{#each file}}
   <a href="/post/{{_id}}">
-    <video id="{{_id}}" class="video-js" controls width="320" height="240" poster="{{_id}}.png">
+    <video id="{{_id}}" width="auto" height="auto" poster="{{_id}}.png">
       <source src="{{link}}" type="{{type}}"/>
     </video>
   
-    <li>{{name}}</li>
+    <li>{{extless name}}</li>
   </a>
   <li>
     <span>
@@ -18,7 +18,7 @@
       {{meta.username}}
     </a>
     </span>
-    <span>
+    <span style="margin-left: 10px">
       {{meta.view_count}}views
     </span>
   </li>
@@ -34,5 +34,4 @@
     <div class="loading">{{> spinner}}</div>
   {{/if}}
   </div>
-  <script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
 </template>

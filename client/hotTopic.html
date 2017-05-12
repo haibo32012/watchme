@@ -10,7 +10,7 @@
   
   {{#each file}}
   <a href="/post/{{_id}}">
-    <video id="{{_id}}" class="video-js" width="auto" height="auto" poster="{{_id}}.png">
+    <video id="{{_id}}" width="auto" height="auto" poster="{{_id}}.png">
       <source src="{{link}}" type="{{type}}"/>
     </video>
   
@@ -18,15 +18,14 @@
   </a>
   <li>
     <span>
-    <img src="{{meta.userPicture}}" class="img-circle">
-      
+      <img src="{{meta.userPicture}}" class="img-circle">  
     </span>
     <span>
     <a href="/user/{{userId}}">
       {{meta.username}}
     </a>
     </span>
-    <span>
+    <span style="margin-left: 10px">
       {{meta.view_count}}views
     </span>
   </li>
@@ -49,5 +48,4 @@
     </div>
   </div>
   </div>
-  <script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
 </template>

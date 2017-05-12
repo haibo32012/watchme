@@ -47,6 +47,7 @@ Template.commentItem.events({
 			alert("Please login");
 			return ;
 		}
+		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 
 		let commentId = this._id;
@@ -84,6 +85,7 @@ Template.commentItem.events({
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
+					userpicture: userpicture,
 					videoId: id,
 					message: " like you comment, congratulations!",
 					submitted: new Date(),
@@ -99,6 +101,7 @@ Template.commentItem.events({
 			alert("Please login");
 			return ;
 		}
+		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 
 		let commentId = this._id;
@@ -136,6 +139,7 @@ Template.commentItem.events({
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
+					userpicture: userpicture,
 					videoId: id,
 					message: " dislike you comment, sorry!",
 					submitted: new Date(),
@@ -174,9 +178,10 @@ Template.commentItem.events({
 			notificationUserId: commentObject.userId,
 			userId: userId,
 			username: username,
+			userpicture: userpicture,
 			videoId: id,
 			commentId: commentId,
-			message: " reply your comment",
+			message: " reply your comment: " + replyText,
 			submitted: new Date(),
 			read: false
 		});
@@ -192,6 +197,7 @@ Template.replyCommentItem.events({
 			alert("Please login");
 			return ;
 		}
+		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 
 		let replyCommentId = this._id;
@@ -229,6 +235,7 @@ Template.replyCommentItem.events({
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
+					userpicture: userpicture,
 					videoId: id,
 					message: " like you comment, congratulations!",
 					submitted: new Date(),
@@ -244,6 +251,7 @@ Template.replyCommentItem.events({
 			alert("Please login");
 			return ;
 		}
+		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 
 		let replyCommentId = this._id;
@@ -281,6 +289,7 @@ Template.replyCommentItem.events({
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
+					userpicture: userpicture,
 					videoId: id,
 					message: " dislike you comment, sorry!",
 					submitted: new Date(),

@@ -11,9 +11,12 @@
 </template>
 
 <template name="notificationItem">
-	<li>
+	<li style="margin-top: 20px">
+		<span>
+			<img src="{{userpicture}}" class="img-circle">
+		</span>
 		<a href="/post/{{videoId}}">
-			<strong>{{username}}</strong>{{message}}<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{DateToISO submitted}}</span>
+			<strong style="margin-right: 10px">{{username}}</strong>{{message}}<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{DateToISO submitted}}</span>
 		</a>
 	</li>
 </template>
