@@ -4,6 +4,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 //import '../lib/collection.js';
 
 var filesize = require("filesize");
+import { moment } from "meteor/momentjs:moment";
 import './uploadForm.html'
 
 Template.uploadForm.onCreated(function() {
@@ -15,13 +16,33 @@ Template.uploadForm.onCreated(function() {
 Template.uploadForm.helpers({
   status: function() {
     const uploadFile = Template.instance().currentFile.get();
-    let progress = uploadFile.progress;
-    let estimateSpeed = uploadFile.estimateSpeed;
-    let estimateTime = uploadFile.estimateTime;
+    let progress = uploadFile.progress.get();
+    progress = Math.ceil(progress);
+    let estimateBitrate = uploadFile.estimateSpeed.get();
+    estimateBitrate = filesize(Math.ceil(estimateBitrate), {bits: true}) + '/s';
+    let estimateDuration = uploadFile.estimateTime.get();
+    estimateDuration = (() => {
+      const duration = moment.duration(Math.ceil(estimateDuration));
+      let hours = '' + (duration.hours());
+      if (hours.length <= 1) {
+        hours = '0' + hours;
+      }
+
+      let minutes = '' + (duration.minutes());
+      if (minutes.length <= 1) {
+        minutes = '0' + minutes;
+      }
+
+      let seconds = '' + (duration.seconds());
+      if (seconds.length <= 1) {
+        seconds = '0' + seconds;
+      }
+      return hours + ':' + minutes + ':' + seconds;
+    })();
     return {
       progress: progress,
-      estimateSpeed: estimateSpeed,
-      estimateTime: estimateTime
+      estimateBitrate: estimateBitrate,
+      estimateDuration: estimateDuration
     };
     //console.log(Template.instance().currentFile.get());
   },

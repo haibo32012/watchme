@@ -5,12 +5,16 @@
   <div>
   {{#if uploading}}
   
-    
-      <span id="progress">#{status.progress}%</span>
-      <span>{{status.estimateSpeed}}</span>
-      <span>{{status.estimateTime}}</span>
-    
-   
+    <li>
+      <span id="progress">{{status.progress}}%</span>
+    </li>
+    <li>
+      <progress value="{{status.progress}}" max="100"></progress>
+    </li>  
+    <li>  
+      <span>{{status.estimateBitrate}}</span>
+      <span>{{status.estimateDuration}}</span>
+    </li> 
   {{else}}
     <input id="fileInput" type="file" />
   {{/if}}
