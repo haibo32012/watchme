@@ -4,16 +4,16 @@
 	<li><h3>Subscribed users</h3></li>
 	<hr>
 	{{#each subscribeUser}}
-		<li>
+		<li style="margin-top: 20px">
 			<span>
     			<img src="{{subscribedPicture}}" class="img-circle">
       		</span>
 			<span>
-				<a href="/user/{{subscribedUserId}}">{{subscribedUserName}} {{subscribedUserId}}</a>
+				<a href="/user/{{subscribedUserId}}">{{subscribedUserName}}</a>
 			</span>
 		</li>
 	{{else}}
-
+		<p>You Haven't Subscribed Anyone</p>
 	{{/each}}
 </div>
 </template>

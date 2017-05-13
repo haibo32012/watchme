@@ -1,0 +1,18 @@
+<template name="subscribedMe">
+	<div class="container">
+	<li><h3>Subscribed Me</h3></li>
+	<hr>
+	{{#each users}}
+		<li style="margin-top: 20px">
+			<span>
+    			<img src="{{userpicture}}" class="img-circle">
+      		</span>
+			<span>
+				<a href="/user/{{userId}}">{{username}}</a>
+			</span>
+		</li>
+	{{else}}
+		<p>Haven't Anyone Subscribed You</p>
+	{{/each}}
+</div>
+</template>

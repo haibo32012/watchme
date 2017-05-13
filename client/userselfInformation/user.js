@@ -29,6 +29,9 @@ Template.user.helpers({
 	},
 	notificationsCount: function() {
 		return Notifications.find({notificationUserId: Meteor.userId(), read: false}).count();
+	},
+	subscribedMeUserCount: function() {
+		return subscribeCollection.find({subscribedUserId: Meteor.userId()}).count();
 	}
 });
 

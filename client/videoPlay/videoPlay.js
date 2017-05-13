@@ -95,6 +95,7 @@ Template.videoPlay.events({
 			alert("Please login");
 			return;
 		}
+		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
 		let subscribed = file.userId;
@@ -138,8 +139,9 @@ Template.videoPlay.events({
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
+					userpicture: userpicture,
 					videoId: id,
-					message: " like you video, congratulations!",
+					message: " like your video, congratulations!",
 					submitted: new Date(),
 					read: false
 			});
@@ -153,6 +155,7 @@ Template.videoPlay.events({
 			alert("Please login");
 			return ;
 		}
+		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
 		let subscribed = file.userId;
@@ -194,8 +197,9 @@ Template.videoPlay.events({
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
+					userpicture: userpicture,
 					videoId: id,
-					message: " dislike you video, sorry!",
+					message: " dislike your video, sorry!",
 					submitted: new Date(),
 					read: false
 			});
@@ -209,6 +213,7 @@ Template.videoPlay.events({
 			alert("Please login");
 			return ;
 		}
+		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
 		let subscribed = file.userId;
@@ -244,6 +249,7 @@ Template.videoPlay.events({
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
+					userpicture: userpicture,
 					videoId: id,
 					message: " share you video, congratulations!",
 					submitted: new Date(),

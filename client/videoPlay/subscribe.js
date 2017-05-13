@@ -13,7 +13,7 @@ Template.subscribe.helpers({
 
 Template.subscribe.events({
 'click #subscribe_button':function() {
-		let user = Meteor.user;
+		let user = Meteor.user();
 		let userId = user._id;
 		let username = user.username;
 		if (userId === null) {
@@ -46,6 +46,8 @@ Template.subscribe.events({
 			} else {
 				let subscribedObject = {
 					userId: userId,
+					username: username,
+					userpicture: userpicture,
 					subscribedUserId: subscribed,
 					subscribedUserName: subscribedUsername,
 					subscribedPicture: subscribedPicture
@@ -61,11 +63,12 @@ Template.subscribe.events({
 					userId: userId,
 					username: username,
 					userpicture: userpicture,
-					videoId: videoId,
+					videoId: id,
 					message: " subscribed you, congratulations",
 					submitted: new Date(),
 					read: false
 				});
+				console.log("notification insert success!");
 			}
 		} else {
 			return;
