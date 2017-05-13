@@ -1,7 +1,7 @@
 <template name="userShare">
 <div class="container">
 
-  <li>
+    <li>
       <span>
         <img src="{{user.profile.picture}}" class="img-circle img-response">
       </span>
@@ -23,7 +23,7 @@
     <hr>
   {{#each file}}
   <a href="/post/{{_id}}">
-    <video id="{{_id}}" width="auto" height="auto" poster="{{_id}}.png">
+    <video id="{{_id}}" class="video-js" poster="{{_id}}.png">
       <source src="{{link}}" type="{{type}}"/>
     </video>
   

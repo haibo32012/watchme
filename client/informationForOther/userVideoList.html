@@ -1,5 +1,5 @@
 <template name="userVideoList">
-<div class="container">
+
   {{#each file}}
   <a href="/post/{{_id}}">
     <video id="{{_id}}" width="auto" height="auto" poster="{{_id}}.png">
@@ -33,6 +33,6 @@
   {{else}}
     <div class="loading">{{> spinner}}</div>
   {{/if}}
-  </div>
+  
 
 </template>
