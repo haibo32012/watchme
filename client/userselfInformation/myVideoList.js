@@ -12,7 +12,7 @@ Template.myVideoList.onCreated(function() {
 Template.myVideoList.helpers({
 	file: function() {
 		let id = Meteor.userId();
-		return files.find({userId: id}) || {};
+		return files.find({userId: id}, {sort: {'meta.created_at': -1}}) || {};
 	}
 });
 
