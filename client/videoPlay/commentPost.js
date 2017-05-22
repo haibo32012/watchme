@@ -76,12 +76,14 @@ Template.commentItem.events({
 				commentId: commentId,
 				isLike: true
 			});
-			Comments.update(commentId,
-				{$inc: {
-					likeCount: 1
-				}}
-			);
-			Notifications.insert({
+			Meteor.call('commentUpdateAddLikeCount', commentId, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('comment update success');
+				}
+			});
+			let notificationObject = {
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
@@ -90,6 +92,13 @@ Template.commentItem.events({
 					message: " like you comment, congratulations!",
 					submitted: new Date(),
 					read: false
+			};
+			Meteor.call('notificationInsert', notificationObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('success insert notification');
+				}
 			});
 		}
 	},
@@ -117,11 +126,13 @@ Template.commentItem.events({
 				return ;
 			} else {
 				likeComment.remove(cursor._id);
-				Comments.update(commentId,
-					{$inc: {
-						dislikeCount: -1
-					}}
-				);
+				Meteor.call('commentUpdateMinusLikeCount', commentId, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('comment like count minus success!');
+					}
+				});
 			}
 		} else {
 			likeComment.insert({

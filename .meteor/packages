@@ -41,3 +41,6 @@ useraccounts:bootstrap
 sacha:spin
 momentjs:moment
 check
+orionjs:core
+fortawesome:fontawesome
+orionjs:bootstrap

@@ -34,20 +34,25 @@ Template.comment.events({
 		let body = document.getElementById("commentText").value;
 		check(body, String);
 		console.log(body);
-
-		
-		
-		let comment = Comments.insert({
+		// comment object
+		let commentObject = {
 			videoId: videoId,
 			userId: userId,
 			username: username,
 			userPicture: userpicture,
 			body: body,
 			submitted: new Date()
+		};
+		Meteor.call('commentInsert', commentObject, (err) => {
+			if (err) {
+				alert(err);
+			} else {
+				console.log("comment success");
+			}
 		});
-		console.log("comment success");
+		
 		e.target.commentBody.value = "";
-		Notifications.insert({
+		let notificationObject = {
 			notificationUserId: videoOfUserId,
 			userId: userId,
 			username: username,
@@ -57,6 +62,13 @@ Template.comment.events({
 			message: " comment on your video: " + body,
 			submitted: new Date(),
 			read: false
+		};
+		Meteor.call('notificationInsert', notificationObject, (err) => {
+			if (err) {
+				alert(err);
+			} else {
+				console.log('notification success');
+			}
 		});
 	}
 });

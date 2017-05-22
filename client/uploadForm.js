@@ -101,7 +101,7 @@ Template.uploadForm.events({
           let subscribedObject = subscribeCollection.find({subscribedUserId: fileObj.userId});
           if (subscribedObject !== undefined) {
             subscribedObject.forEach(function(doc) {
-              Notifications.insert({
+              let notificationObject = {
                 notificationUserId: doc.userId,
                 username: fileObj.meta.username,
                 userpicture: fileObj.meta.userPicture,
@@ -110,6 +110,11 @@ Template.uploadForm.events({
                 message: " upload a new video",
                 submitted: new Date(),
                 read: false
+              };
+              Meteor.call('notificationInsert', notificationObject, (err) => {
+                if (err) {
+                    alert(err);
+                }
               });
             });
           } else {
@@ -117,7 +122,7 @@ Template.uploadForm.events({
           }
 
           //FlowRouter.go('/Update/fileObj._id');
-           $('#uploadModal').modal('show');
+           
   			}
         //template.currentFile.set(false);
         template.uploading.set(false);
