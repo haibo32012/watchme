@@ -63,18 +63,27 @@ Template.commentItem.events({
 				return ;
 			} else {
 				likeComment.remove(cursor._id);
-				Comments.update(commentId,
-					{$inc: {
-						likeCount: -1
-					}}
-				);
+				Meteor.call('commentUpdateMinusLikeCount', commentId, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('comment like count minus success!');
+					}
+				});
 			}
 		} else {
-			likeComment.insert({
+			let likeCommentObject = {
 				userId: userId,
 				videoId: id,
 				commentId: commentId,
 				isLike: true
+			};
+			Meteor.call('likeCommentInsert', likeCommentObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('like comment insert success!');
+				}
 			});
 			Meteor.call('commentUpdateAddLikeCount', commentId, (err) => {
 				if (err) {
@@ -126,27 +135,36 @@ Template.commentItem.events({
 				return ;
 			} else {
 				likeComment.remove(cursor._id);
-				Meteor.call('commentUpdateMinusLikeCount', commentId, (err) => {
+				Meteor.call('commentUpdateMinusdislikeCount', commentId, (err) => {
 					if (err) {
 						alert(err);
 					} else {
-						console.log('comment like count minus success!');
+						console.log('comment dislike count minus success!');
 					}
 				});
 			}
 		} else {
-			likeComment.insert({
+			let dislikeCommentObject = {
 				userId: userId,
 				commentId: commentId,
 				videoId: id,
 				isDislike: true
+			};
+			Meteor.call('likeCommentInsert', dislikeCommentObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('dislike comment insert success!');
+				}
 			});
-			Comments.update(commentId,
-				{$inc: {
-					dislikeCount: 1
-				}}
-			);
-			Notifications.insert({
+			Meteor.call('commentUpdateAdddislikeCount', commentId, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('comment dislike count add success!');
+				}
+			});
+			let dislikeNotificationObject = {
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
@@ -155,6 +173,13 @@ Template.commentItem.events({
 					message: " dislike you comment, sorry!",
 					submitted: new Date(),
 					read: false
+			};
+			Meteor.call('notificationInsert', dislikeNotificationObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('dislike notification success!');
+				}
 			});
 		}
 	},
@@ -174,18 +199,25 @@ Template.commentItem.events({
 		let username = user.username;
 		let commentId = this._id;
 		let userpicture = user.profile.picture;
-		let replycomment = replyComment.insert({
+		let replyCommentObject = {
 			userId: userId,
 			userName: username,
 			commentId: commentId,
 			userPicture: userpicture,
 			body: replyText,
 			submitted: new Date()
+		};
+		Meteor.call('replyCommentInsert', replyCommentObject, (err) => {
+			if (err) {
+				alert(err);
+			} else {
+				console.log('reply comment insert success!');
+			}
 		});
-		console.log(replycomment);
+		//console.log(replycomment);
 		let commentObject = Comments.findOne({_id: commentId}) || {};
 		let id = FlowRouter.getParam('_id');
-		Notifications.insert({
+		let replyNotificationObject = {
 			notificationUserId: commentObject.userId,
 			userId: userId,
 			username: username,
@@ -195,6 +227,13 @@ Template.commentItem.events({
 			message: " reply your comment: " + replyText,
 			submitted: new Date(),
 			read: false
+		};
+		Meteor.call('notificationInsert', replyNotificationObject, (err) => {
+			if (err) {
+				alert(err);
+			} else {
+				console.log('reply comment notification success!');
+			}
 		});
 	}
 });
@@ -224,25 +263,36 @@ Template.replyCommentItem.events({
 				return ;
 			} else {
 				replyLikeComment.remove(cursor._id);
-				replyComment.update(replyCommentId,
-					{$inc: {
-						likeCount: -1
-					}}
-				);
+				Meteor.call('replyCommentMinusLikeCount', replyCommentId, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('reply comment minus like count success!');
+					}
+				});
 			}
 		} else {
-			replyLikeComment.insert({
+			let replyLikeCommentObject = {
 				userId: userId,
 				videoId: id,
 				replyCommentId: replyCommentId,
 				isLike: true
+			};
+			Meteor.call('replyLikeCommentInsert', replyLikeCommentObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('reply comment like insert success!');
+				}
 			});
-			replyComment.update(replyCommentId,
-				{$inc: {
-					likeCount: 1
-				}}
-			);
-			Notifications.insert({
+			Meteor.call('replyCommentAddLikeCount', replyCommentId, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('reply comment add like count success!');
+				}
+			});
+			let replyLikeNotificationObject = {
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
@@ -251,6 +301,13 @@ Template.replyCommentItem.events({
 					message: " like you comment, congratulations!",
 					submitted: new Date(),
 					read: false
+			};
+			Meteor.call('notificationInsert', replyLikeNotificationObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('like reply comment notification success!');
+				}
 			});
 		}
 	},
@@ -278,25 +335,36 @@ Template.replyCommentItem.events({
 				return ;
 			} else {
 				replyLikeComment.remove(cursor._id);
-				replyComment.update(replyCommentId,
-					{$inc: {
-						dislikeCount: -1
-					}}
-				);
+				Meteor.call('replyCommentMinusdislikeCount', replyCommentId, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('reply comment minus dislike count success!');
+					}
+				});
 			}
 		} else {
-			replyLikeComment.insert({
+			let replyLikeCommentObject = {
 				userId: userId,
 				videoId: id,
 				replyCommentId: replyCommentId,
 				isDislike: true
+			};
+			Meteor.call('replyLikeCommentInsert', replyLikeCommentObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('reply comment dislike insert success!');
+				}
 			});
-			replyComment.update(replyCommentId,
-				{$inc: {
-					dislikeCount: 1
-				}}
-			);
-			Notifications.insert({
+			Meteor.call('replyCommentAdddislikeCount', replyCommentId, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('reply comment add dislike count success!');
+				}
+			});
+			let dislikeReplyNotificationObject = {
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
@@ -305,6 +373,13 @@ Template.replyCommentItem.events({
 					message: " dislike you comment, sorry!",
 					submitted: new Date(),
 					read: false
+			};
+			Meteor.call('notificationInsert', dislikeReplyNotificationObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('dislike reply comment notification success!');
+				}
 			});
 		}
 	}

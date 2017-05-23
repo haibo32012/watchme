@@ -38,11 +38,13 @@ Template.subscribe.events({
 
 			if (subscribedObject !== undefined) {
 				subscribeCollection.remove(subscribedObject._id);
-				Meteor.users.update(subscribed,
-					{$inc: {
-						'profile.subscribe_count': -1
-					}},
-				);
+				Meteor.call('userSubscribedMinusCount', subscribed, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('user subscribed count minus success!');
+					}
+				});
 			} else {
 				let subscribedObject = {
 					userId: userId,
@@ -52,13 +54,21 @@ Template.subscribe.events({
 					subscribedUserName: subscribedUsername,
 					subscribedPicture: subscribedPicture
 				};
-				subscribeCollection.insert(subscribedObject);
-				Meteor.users.update(subscribed,
-					{$inc: {
-						'profile.subscribe_count': 1
-					}},
-				);
-				Notifications.insert({
+				Meteor.call('subscribeUserInsert', subscribedObject, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('subscribe user insert success!');
+					}
+				});
+				Meteor.call('userSubscribedAddCount', subscribed, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('user subscribed count add success!');
+					}
+				});
+				let subscribedUserNotificationObject = {
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
@@ -67,8 +77,14 @@ Template.subscribe.events({
 					message: " subscribed you, congratulations",
 					submitted: new Date(),
 					read: false
+				};
+				Meteor.call('notificationInsert', subscribedUserNotificationObject, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('subscribed user insert notification success!');
+					}
 				});
-				console.log("notification insert success!");
 			}
 		} else {
 			return;

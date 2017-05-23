@@ -40,11 +40,13 @@ Template.videoPlay.onRendered(function() {
 	let userId = Meteor.userId();
 	let id = FlowRouter.getParam('_id');
 	// Insert viewCount into the files collection
-	files.update(id,
-		{$inc: {
-			'meta.view_count': 1
-		}},
-	);
+	Meteor.call('videoViewCountUpdate', id, (err) => {
+		if (err) {
+			alert(err);
+		} else {
+			console.log('video view count add one success!');
+		}
+	});
 
 	// If watched, insert into the userwatchedcollection
 	let userWatchedObject = userWatchedCollection.findOne({
@@ -55,9 +57,16 @@ Template.videoPlay.onRendered(function() {
 	if (userWatchedObject !== undefined) {
 		return;
 	} else {
-		userWatchedCollection.insert({
+		let object = {
 			userId: userId,
 			videoId: id,
+		};
+		Meteor.call('userWatchedVideoList', object, (err) => {
+			if (err) {
+				alert(err);
+			} else {
+				console.log('user watched video insert success!');
+			}
 		});
 	}
 	
@@ -111,31 +120,37 @@ Template.videoPlay.events({
 			} else {
 				UserLikeCollection.remove(userLikeObject._id);
 			
-				files.update(id,
-					{$inc: {
-						'meta.like_count': -1
-					}},
-					//{validate: false},
-					{validate: false, filter: false}
-				);
+				Meteor.call('videoLikeCountMinusUpdate', id, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('video like count minus success!');
+					}
+				});
 			}
 			
 		} else {
-			UserLikeCollection.insert({
+			let userLike = {
 				userId: userId,
 				videoId: id,
 				isLike: true
+			};
+			Meteor.call('userLikeVideoInsert', userLike, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('user like video insert success!');
+				}
 			});
 			
-			files.update(id,
-				{$inc: {
-					'meta.like_count': 1
-				}},
-				//{validate: false},
-				{validate: false, filter: false}
-			);
-
-			Notifications.insert({
+			Meteor.call('videoLikeCountAddUpdate', id, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('vide like count add success!');
+				}
+			});
+			let videoLikeObject = {
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
@@ -144,6 +159,13 @@ Template.videoPlay.events({
 					message: " like your video, congratulations!",
 					submitted: new Date(),
 					read: false
+			};
+			Meteor.call('notificationInsert', videoLikeObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('like video notification insert success!');
+				}
 			});
 		}
 	},
@@ -170,30 +192,37 @@ Template.videoPlay.events({
 			} else {
 				UserLikeCollection.remove(userLikeObject._id);
 			
-				files.update(id,
-					{$inc: {
-						'meta.dislike_count': -1
-					}},
-				//{validate: false},
-				{validate: false, filter: false}
-				);
+				Meteor.call('videoDislikeCountMinusUpdate', id, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('video dislike count minus success!');
+					}
+				});
 			}
 		} else {
-			UserLikeCollection.insert({
+			let userDislike = {
 				userId: userId,
 				videoId: id,
 				isDislike: true
+			};
+			Meteor.call('userLikeVideoInsert', userDislike, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('user dislike video insert success!');
+				}
 			});
 			
-			files.update(id,
-				{$inc: {
-					'meta.dislike_count': 1
-				}},
-				//{validate: false},
-				{validate: false, filter: false}
-			);
+			Meteor.call('videoDislikeCountAddUpdate', id, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('video dislike count add success!');
+				}
+			});
 
-			Notifications.insert({
+			let videoDislikeObject = {
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
@@ -202,6 +231,13 @@ Template.videoPlay.events({
 					message: " dislike your video, sorry!",
 					submitted: new Date(),
 					read: false
+			};
+			Meteor.call('notificationInsert', videoDislikeObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('dislike video notification insert success!');
+				}
 			});
 		}
 	},
@@ -226,26 +262,33 @@ Template.videoPlay.events({
 		console.log(userShareObject);
 		if (userShareObject !== undefined) {
 			shareCollection.remove(userShareObject._id);
-			files.update(id,
-				{$inc: {
-					'meta.share_count': -1
-				}},
-				//{validate: false},
-				{validate: false, filter: false}
-			);
+			Meteor.call('videoShareCountMinusUpdate', id, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('video share count minus success!');
+				}
+			});
 		} else {
-			shareCollection.insert({
+			let userShare = {
 				userId: userId,
 				videoId: id
+			};
+			Meteor.call('userShareVideoInsert', userShare, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('user share vide list insert success!');
+				}
 			});
-			files.update(id,
-				{$inc: {
-					'meta.share_count': 1
-				}},
-				//{validate: false},
-				{validate: false, filter: false}
-			);
-			Notifications.insert({
+			Meteor.call('videoShareCountAddUpdate', id, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('video share count add success!');
+				}
+			});
+			let shareNotificationObject = {
 					notificationUserId: subscribed,
 					userId: userId,
 					username: username,
@@ -254,6 +297,13 @@ Template.videoPlay.events({
 					message: " share you video, congratulations!",
 					submitted: new Date(),
 					read: false
+			};
+			Meteor.call('notificationInsert', shareNotificationObject, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('share video notification insert success!');
+				}
 			});
 		}
 	}
