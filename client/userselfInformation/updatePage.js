@@ -24,11 +24,13 @@ Template.updatePage.events({
 		let id = FlowRouter.getParam('_id');
 		// view type of the video
 		let viewType = document.querySelector('input[name="viewTypeOfVideo"]:checked').value;
-		files.update({_id: id},
-			{$set: {
-				'meta.viewType': viewType
-			}}
-		);
+		Meteor.call('videoViewTypeUpdate', id, viewType, (err) => {
+			if (err) {
+				alert(err);
+			} else {
+				console.log('video view type update success!');
+			}
+		});
 
 		// type of the video price
 		let videoIntroduction = e.target.videoIntro.value;
@@ -39,33 +41,40 @@ Template.updatePage.events({
 		check(priceValue, String);
 		console.log(priceValue);
 		
-		files.update({_id: id},
-			{$set: {
-				'meta.introduction': videoIntroduction
-			}}
-		);
+		Meteor.call('videoIntroductionUpdate', id, videoIntroduction, (err) => {
+			if (err) {
+				alert(err);
+			} else {
+				console.log('video introduction update success!');
+			}
+		});
 		switch(priceType) {
 			case 'freeVideo':
-				files.update({_id: id},
-					{$set: {
-						'meta.priceType': 'freeVideo'
-					}}
-				);
+				Meteor.call('videoPriceTypeUpdate', id, 'freeVideo', (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('video price type update success!');
+					}
+				});
 				break;
 			case 'donateVideo':
-				files.update({_id: id},
-					{$set: {
-						'meta.priceType': 'donateVideo'
-					}}
-				);
+				Meteor.call('videoPriceTypeUpdate', id, 'donateVideo', (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('video price type update success!');
+					}
+				});
 				break;
 			case 'bargainVideo':
-				files.update({_id: id},
-					{$set: {
-						'meta.priceType': 'bargainVideo',
-						'meta.price': priceValue
-					}}
-				);
+				Meteor.call('videoPriceTypeUpdate', id, 'bargainVideo', (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('video price type update success!');
+					}
+				});
 				break;
 		}
 		$('#videoReviewModal').modal('show');

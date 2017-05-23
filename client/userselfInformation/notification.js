@@ -23,6 +23,12 @@ Template.notificationItem.helpers({
 
 Template.notificationItem.events({
 	'click a': function() {
-		Notifications.update(this._id, {$set: {read: true}});
+		Meteor.call('notificationUpdate', this._id, (err) => {
+			if (err) {
+				alert(err);
+			} else {
+				console.log('notification has already been read!');
+			}
+		});
 	}
 });
