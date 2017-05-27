@@ -44,3 +44,5 @@ check
 orionjs:core
 fortawesome:fontawesome
 orionjs:bootstrap
+swydo:blaze-apollo
+apollo
