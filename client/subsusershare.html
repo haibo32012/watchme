@@ -1,6 +1,6 @@
 <template name="subsusershare">
 	<div class="container">
-
+  {{#if currentUser}}
   {{#each file}}
   <a href="/post/{{_id}}">
     <video id="{{_id}}"  poster="{{_id}}.png">
@@ -33,6 +33,9 @@
     {{/if}}
   {{else}}
     <div class="loading">{{> spinner}}</div>
+  {{/if}}
+  {{else}}
+    <p>Please <a href="/login">login</a></p>
   {{/if}}
   </div>
 </template>
