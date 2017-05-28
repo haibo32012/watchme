@@ -1,6 +1,6 @@
 <template name="uploadForm">
 <div class="container">
-
+  {{#if currentUser}}
   <h2>Upload</h2>
   <div>
   {{#if uploading}}
@@ -23,6 +23,8 @@
     <input id="fileInput" type="file" />
   {{/if}}
   </div>
-  
+  {{else}}
+    <p>Please <a href="/login">login</a></p>
+  {{/if}}
 </div>
 </template>
