@@ -19,11 +19,14 @@
           </li>
         {{/if}}
   	 	 		<li style="margin-top: 20px">{{extless name}}</li>
-          <li class="dropdown-toggle">{{meta.introduction}}</li>
-          <li style="margin-top: 10px">{{DateToISO meta.created_at}}</li>
           <li style="margin-top: 10px">{{meta.view_count}} views</li>
-          <li style="margin-top: 10px">{{meta.priceType}}:  {{meta.price}}</li>
-          <li style="margin-top: 10px">{{meta.viewType}}</li>
+          <submit class="glyphicon glyphicon-menu-down" data-toggle="collapse" data-target="#content"></submit>
+          <div class="collapse" id="content">
+            <li class="dropdown-toggle">{{meta.introduction}}</li>
+            <li style="margin-top: 10px">{{DateToISO meta.created_at}}</li>
+            <li style="margin-top: 10px">{{meta.priceType}}:  {{meta.price}}</li>
+            <li style="margin-top: 10px">{{meta.viewType}}</li>
+          </div>
           <hr>
           <div>
             <li>
