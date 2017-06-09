@@ -15,6 +15,9 @@ Template.user.helpers({
 	user: function() {
 		return Meteor.user();
 	},
+	email: function() {
+		return Meteor.user().emails[0].address;
+	},
 	myVideosCount: function() {
 		return files.find({userId: Meteor.userId()}).count();
 	},
