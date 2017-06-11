@@ -118,8 +118,14 @@ Template.videoPlay.events({
 			if (userLikeObject.isDislike === true) {
 				return;
 			} else {
-				UserLikeCollection.remove(userLikeObject._id);
-			
+				//UserLikeCollection.remove(userLikeObject._id);
+				Meteor.call('videoLikeCollectionRemove', userLikeObject._id, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('like video operation remove success!');
+					}
+				});
 				Meteor.call('videoLikeCountMinusUpdate', id, (err) => {
 					if (err) {
 						alert(err);
@@ -190,8 +196,14 @@ Template.videoPlay.events({
 			if (userLikeObject.isLike === true) {
 				return;
 			} else {
-				UserLikeCollection.remove(userLikeObject._id);
-			
+				//UserLikeCollection.remove(userLikeObject._id);
+				Meteor.call('videoLikeCollectionRemove', userLikeObject._id, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('like video operation remove success!');
+					}
+				});
 				Meteor.call('videoDislikeCountMinusUpdate', id, (err) => {
 					if (err) {
 						alert(err);
@@ -261,7 +273,14 @@ Template.videoPlay.events({
 		});
 		console.log(userShareObject);
 		if (userShareObject !== undefined) {
-			shareCollection.remove(userShareObject._id);
+			//shareCollection.remove(userShareObject._id);
+			Meteor.call('videoShareCollectionRemove', userShareObject._id, (err) => {
+				if (err) {
+					alert(err);
+				} else {
+					console.log('video share operation remove success!');
+				}
+			});
 			Meteor.call('videoShareCountMinusUpdate', id, (err) => {
 				if (err) {
 					alert(err);

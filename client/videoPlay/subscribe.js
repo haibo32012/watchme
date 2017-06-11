@@ -37,7 +37,14 @@ Template.subscribe.events({
 			console.log(subscribedObject);
 
 			if (subscribedObject !== undefined) {
-				subscribeCollection.remove(subscribedObject._id);
+				//subscribeCollection.remove(subscribedObject._id);
+				Meteor.call('subscribeUserRemove', subscribedObject._id, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('unsubscribe user remove success!');
+					}
+				});
 				Meteor.call('userSubscribedMinusCount', subscribed, (err) => {
 					if (err) {
 						alert(err);

@@ -63,7 +63,13 @@ Template.commentItem.events({
 			if (cursor.isDislike === true) {
 				return ;
 			} else {
-				likeComment.remove(cursor._id);
+				Meteor.call('likeCommentRemove', cursor._id, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('remove like comment operation success!');
+					}
+				});
 				Meteor.call('commentUpdateMinusLikeCount', commentId, (err) => {
 					if (err) {
 						alert(err);
@@ -135,7 +141,13 @@ Template.commentItem.events({
 			if (cursor.isLike === true) {
 				return ;
 			} else {
-				likeComment.remove(cursor._id);
+				Meteor.call('likeCommentRemove', cursor._id, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('remove like comment operation success!');
+					}
+				});
 				Meteor.call('commentUpdateMinusdislikeCount', commentId, (err) => {
 					if (err) {
 						alert(err);
@@ -263,7 +275,14 @@ Template.replyCommentItem.events({
 			if (cursor.isDislike === true) {
 				return ;
 			} else {
-				replyLikeComment.remove(cursor._id);
+				//replyLikeComment.remove(cursor._id);
+				Meteor.call('replyLikeCommentRemove', cursor._id, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('reply like comment operation remove success!');
+					}
+				});
 				Meteor.call('replyCommentMinusLikeCount', replyCommentId, (err) => {
 					if (err) {
 						alert(err);
@@ -335,7 +354,14 @@ Template.replyCommentItem.events({
 			if (cursor.isLike === true) {
 				return ;
 			} else {
-				replyLikeComment.remove(cursor._id);
+				//replyLikeComment.remove(cursor._id);
+				Meteor.call('replyLikeCommentRemove', cursor._id, (err) => {
+					if (err) {
+						alert(err);
+					} else {
+						console.log('reply like comment operation remove success!');
+					}
+				});
 				Meteor.call('replyCommentMinusdislikeCount', replyCommentId, (err) => {
 					if (err) {
 						alert(err);
