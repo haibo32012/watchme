@@ -1,6 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 //import Comments from '../../lib/collections/commentCollection.js';
+import files from '/lib/collections/collection.js';
 import './comment.html';
 import './commentPost.js';
 

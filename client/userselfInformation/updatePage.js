@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import {check} from 'meteor/check';
+import files from '/lib/collections/collection.js';
 import './updatePage.html';
 
 Template.updatePage.helpers({

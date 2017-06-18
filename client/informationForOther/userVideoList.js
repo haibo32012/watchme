@@ -1,4 +1,5 @@
 import { ReactiveVar } from 'meteor/reactive-var';
+import files from '/lib/collections/collection.js';
 import './userVideoList.html';
 
 Template.userVideoList.onCreated(function() {

@@ -1,3 +1,4 @@
+import files from '/lib/collections/collection.js';
 import './userShare.html';
 
 Template.userShare.helpers({

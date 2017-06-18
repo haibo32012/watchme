@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import files from '/lib/collections/collection.js';
 import './subscribe.html';
 
 Template.subscribe.helpers({

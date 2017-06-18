@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import files from '/lib/collections/collection.js';
 import './myVideoList.html';
 
 Template.myVideoList.onCreated(function() {

@@ -1,3 +1,4 @@
+import files from '/lib/collections/collection.js';
 import './share.html';
 
 Template.share.helpers({
