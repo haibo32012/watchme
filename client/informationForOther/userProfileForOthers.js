@@ -19,13 +19,15 @@ Template.userProfileForOthers.helpers({
 
 Template.userProfileForOthers.events({
 	'click #subscribe_button':function() {
+		if (Meteor.user() === null) {
+			console.log('please login');
+			//alert('please login');
+			return ;
+		}
 		let user = Meteor.user();
 		let userId = user._id;
 		let username = user.username;
-		if (userId === null) {
-			alert("Please login");
-			return ;
-		}
+		
 		let userpicture = user.profile.picture;
 		let subscribed = FlowRouter.getParam('_id');
 		let subscribedUser = Meteor.users.findOne({_id: subscribed});

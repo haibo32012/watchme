@@ -44,7 +44,7 @@ Template.user.helpers({
 });
 
 Template.user.events({
-	'click button': function(e) {
+	'click #logoutButton': function(e) {
 		e.preventDefault();
 		AccountsTemplates.logout();
 	}
