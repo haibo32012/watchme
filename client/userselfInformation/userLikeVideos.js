@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import files from '/lib/collections/collection.js';
+import UserLikeCollection from '/lib/collections/userLikeCollection.js';
 import './userLikeVideos.html';
 
 

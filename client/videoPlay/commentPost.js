@@ -3,6 +3,9 @@ import {check} from 'meteor/check';
 import { ReactiveVar } from 'meteor/reactive-var';
 //import Comments from '../../lib/collections/commentCollection.js';
 import Comments from '/lib/collections/commentCollection.js';
+import replyComment from '/lib/collections/replyComment.js';
+import replyLikeComment from '/lib/collections/replyLikeComment.js';
+import likeComment from '/lib/collections/userLikeComment.js';
 import './commentPost.html';
 
 

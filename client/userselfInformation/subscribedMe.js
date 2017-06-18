@@ -1,4 +1,5 @@
 import {Meteor} from 'meteor/meteor';
+import subscribeCollection from '/lib/collections/subscribeCollection.js';
 import './subscribedMe.html';
 
 Template.subscribedMe.onCreated(function() {

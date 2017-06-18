@@ -1,6 +1,9 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Meteor } from 'meteor/meteor';
 import files from '/lib/collections/collection.js';
+import shareCollection from '/lib/collections/sharecollection.js';
+import UserLikeCollection from '/lib/collections/userLikeCollection.js';
+import userWatchedCollection from '/lib/collections/userWatchedCollection.js';
 import './videoPlay.html';
 import './comment.js';
 

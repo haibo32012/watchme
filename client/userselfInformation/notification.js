@@ -1,4 +1,5 @@
 import {Meteor} from 'meteor/meteor';
+import Notifications from '/lib/collections/notifications.js';
 import './notification.html';
 
 Template.notification.helpers({

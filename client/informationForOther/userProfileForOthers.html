@@ -8,6 +8,9 @@
 			<span>
 				{{user.username}}
 			</span>
+			<span style="margin-left: 10px">
+				<button id="subscribe_button" class="btn btn-primary">SUBSCRIBE({{user.profile.subscribe_count}})</button>
+			</span>
 		</li>
 		<ul class="nav nav-tabs">
 			<li><a href="/user/{{user._id}}" class="active">Uploaded</a></li>

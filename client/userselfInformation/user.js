@@ -1,6 +1,10 @@
 import {Meteor} from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 import files from '/lib/collections/collection.js';
+import Notifications from '/lib/collections/notifications.js';
+import shareCollection from '/lib/collections/sharecollection.js';
+import subscribeCollection from '/lib/collections/subscribeCollection.js';
+import UserLikeCollection from '/lib/collections/userLikeCollection.js';
 
 import "./user.html";
 

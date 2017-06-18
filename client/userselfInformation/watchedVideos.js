@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import files from '/lib/collections/collection.js';
+import userWatchedCollection from '/lib/collections/userWatchedCollection.js';
 import './watchedVideos.html';
 
 Template.watchedVideos.helpers({
