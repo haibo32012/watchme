@@ -2,6 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 //import Comments from '../../lib/collections/commentCollection.js';
 import files from '/lib/collections/collection.js';
+import Comments from '/lib/collections/commentCollection.js';
 import './comment.html';
 import './commentPost.js';
 
@@ -54,13 +55,14 @@ Template.comment.events({
 		});
 		
 		e.target.commentBody.value = "";
+		//console.log(this._id);
 		let notificationObject = {
 			notificationUserId: videoOfUserId,
 			userId: userId,
 			username: username,
 			userpicture: userpicture,
 			videoId: videoId,
-			commentId: comment._id,
+			//commentId: this._id,
 			message: " comment on your video: " + body,
 			submitted: new Date(),
 			read: false

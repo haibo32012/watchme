@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import {check} from 'meteor/check';
 import { ReactiveVar } from 'meteor/reactive-var';
 //import Comments from '../../lib/collections/commentCollection.js';
+import Comments from '/lib/collections/commentCollection.js';
 import './commentPost.html';
 
 
