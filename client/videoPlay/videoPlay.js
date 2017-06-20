@@ -101,13 +101,13 @@ Template.videoPlay.helpers({
 
 Template.videoPlay.events({
 	'click #goodToggleButton': function() {
+		if (Meteor.user() === undefined) {
+			return ;
+		}
 		let user = Meteor.user();
 		let userId = user._id;
 		let username = user.username;
-		if (userId === null) {
-			alert("Please login");
-			return;
-		}
+		
 		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
@@ -180,13 +180,13 @@ Template.videoPlay.events({
 		}
 	},
 	'click #badToggleButton': function() {
+		if (Meteor.user() === undefined) {
+			return ;
+		}
 		let user = Meteor.user();
 		let userId = user._id;
 		let username = user.username;
-		if (userId === null) {
-			alert("Please login");
-			return ;
-		}
+		
 		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
@@ -258,13 +258,13 @@ Template.videoPlay.events({
 		}
 	},
 	'click #share': function() {
+		if (Meteor.user() === undefined) {
+			return ;
+		}
 		let user = Meteor.user();
 		let userId = user._id;
 		let username = user.username;
-		if (userId === null) {
-			alert("Please login");
-			return ;
-		}
+		
 		let userpicture = user.profile.picture;
 		let id = FlowRouter.getParam('_id');
 		let file = files.findOne({_id: id}) || {};
@@ -301,7 +301,7 @@ Template.videoPlay.events({
 				if (err) {
 					alert(err);
 				} else {
-					console.log('user share vide list insert success!');
+					console.log('user share video list insert success!');
 				}
 			});
 			Meteor.call('videoShareCountAddUpdate', id, (err) => {

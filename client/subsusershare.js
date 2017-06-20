@@ -2,6 +2,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import {Meteor} from 'meteor/meteor';
 import files from '/lib/collections/collection.js';
 import shareCollection from '/lib/collections/sharecollection.js';
+import subscribeCollection from '/lib/collections/subscribeCollection.js';
 import './subsusershare.html';
 
 Template.subsusershare.onCreated(function() {
