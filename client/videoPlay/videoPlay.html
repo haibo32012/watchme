@@ -1,8 +1,10 @@
 <template name="videoPlay">
   <div class="container">
 	<div >
+    
 		{{#if Template.subscriptionsReady}}
   			{{#with file.with}}
+    {{#if currentUser}}
         {{#if isTypeForAll}}
         <div class="wrapper">
         <div class="videocontent">
@@ -18,6 +20,11 @@
             <p><h3>This video only for adult, Please go to the profile check you age!</h3></p>
           </li>
         {{/if}}
+    {{else}}
+        <li>
+            <p><h3>Please &nbsp;<a href="/user">login</a></h3></p>
+        </li>
+    {{/if}}
   	 	 		<li style="margin-top: 20px">{{extless name}}</li>
           <li style="margin-top: 10px">{{meta.view_count}} views</li>
           <submit class="glyphicon glyphicon-triangle-bottom" data-toggle="collapse" data-target="#content"></submit>
@@ -43,6 +50,7 @@
   		{{else}}
   			<p>Loading....</p>
   		{{/if}}
+
 	</div>
   <div>
     
