@@ -16,3 +16,15 @@ Template.mySubscribeUser.helpers({
 		return subscribeCollection.find({userId: userId}) || {};
 	}
 });
+
+Template.mySubscribeUser.events({
+	'click #unsubscribe_button': function() {
+		Meteor.call('subscribeUserRemove', this._id, (err) => {
+			if (err) {
+				alert(err);
+			} else {
+				console.log('unsubscribe user remove success!');
+			}
+		});
+	},
+});
