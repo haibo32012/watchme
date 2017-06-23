@@ -2,6 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import files from '/lib/collections/collection.js';
+import subscribeCollection from '/lib/collections/subscribeCollection.js';
 //import '../lib/collection.js';
 
 var filesize = require("filesize");
