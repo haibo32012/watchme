@@ -1,31 +1,42 @@
 <template name="uploadForm">
 <div class="container">
   {{#if currentUser}}
-  <h2>Upload</h2>
-  <div>
-  {{#if uploading}}
-  
-    <li>
+    {{#if showVideoEdit}}
+      {{> videoEdit}}
+    {{else}}
+    <h2>Upload</h2>
+    <div>
+      {{#if uploading}}
+      <li>
       <span id="progress"><h3>{{status.progress}}%&nbsp;&nbsp;</h3>finished</span>
-    </li>
-    <li style="margin-top: 20px">
+      </li>
+      <li style="margin-top: 20px">
       <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="{{status.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{status.progress}}%;">
           
         </div>
       </div>
-    </li>  
-    <li style="margin-top: 20px">  
+      </li>  
+      <li style="margin-top: 20px">  
       <span>UploadSpeed: &nbsp;&nbsp;&nbsp;</span><span>{{status.estimateBitrate}}</span>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>LeftTime: &nbsp;&nbsp;&nbsp;</span><span>{{status.estimateDuration}}</span>
-    </li> 
-  {{else}}
-    <input id="fileInput" type="file" />
-    <p><small>Upload file in <code>mp4</code> or <code>webm</code> or <code>ogg</code> format, with size less or equal to 128MB</small></p>
-  {{/if}}
-  </div>
+      </li> 
+      {{else}}
+      <input id="fileInput" type="file" />
+      <p><small>Upload file in <code>mp4</code> or <code>webm</code> or <code>ogg</code> format, with size less or equal to 128MB</small></p>
+      {{/if}}
+      </div>
+    {{/if}}
   {{else}}
     <p>Please <a href="/user">login</a></p>
   {{/if}}
 </div>
+</template>
+<template name="videoEdit">
+  {{#with editVideo}}
+      <video id="{{_id}}" width="320px" height="260px" poster="{{_id}}.png">
+        <source src="{{link}}" type="{{type}}"/>
+      </video>
+      <li>{{extless name}}</li>
+  {{/with}}
 </template>

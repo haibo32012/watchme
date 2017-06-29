@@ -53,6 +53,15 @@ Template.uploadForm.helpers({
   },
   uploading: function() {
     return Template.instance().uploading.get();
+  },
+  showVideoEdit: function() {
+    return !!files.findOne({userId: Meteor.userId(),"meta.publish": false});
+  }
+});
+
+Template.videoEdit.helpers({
+  editVideo: function() {
+    return files.findOne({userId: Meteor.userId(),"meta.publish": false});
   }
 });
 
@@ -72,7 +81,8 @@ Template.uploadForm.events({
           dislike_count: parseInt(0),
           view_count: parseInt(0),
           share_count: 0,
-          created_at: new Date()
+          created_at: new Date(),
+          publish: false,
         },
         //userId: Meteor.userId(),
   			streams: 'dynamic',
