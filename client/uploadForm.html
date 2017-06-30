@@ -34,9 +34,71 @@
 </template>
 <template name="videoEdit">
   {{#with editVideo}}
-      <video id="{{_id}}" width="320px" height="260px" poster="{{_id}}.png">
+    <div>
+      <video id="{{_id}}" width="300px" height="150px" poster="{{_id}}.png">
         <source src="{{link}}" type="{{type}}"/>
       </video>
       <li>{{extless name}}</li>
+    </div>
+    <hr>
+    <div>
+    <form id="editForm">
+      <li>
+          <span><h4>The video for viewer type</h4></span>
+          <span>
+            <label>
+              <input type="radio" checked="checked" name="TypeOfVideo" value="adult"/>adult people
+            </label>
+          </span>
+          <span>
+            <label>
+              <input type="radio" name="TypeOfVideo" value="all"/>all People
+            </label>
+          </span>
+          
+        </li>
+        <hr>
+        <li>
+          <h4>Type Of The Video</h4>
+        </li>
+     
+        <li>
+          <span>
+            <label>
+              <input type="radio" checked="checked" name="priceOfVideo" value="freeVideo"/>free
+            </label>
+          </span>
+        </li>
+      
+        <li>
+          <span>
+            <label>
+              <input type="radio" name="priceOfVideo" value="donateVideo"/>donate
+            </label>
+          </span>
+        </li>
+      
+        <li>
+          <span>
+            <label>
+              <input type="radio" name="priceOfVideo" value="bargainVideo"/>bargain
+            </label>
+          </span>
+          <span>
+            <div class="input-group">
+              <div class="input-group-addon">¥</div>
+              <input type="text" class="form-control" value="0" name="videoValue" />
+              <div class="input-group-addon">.00</div>
+            </div>
+          </span>
+        </li>
+        <hr>
+        <label>The Introduction Of This Video</label>
+        <li>
+          <textarea id="videoIntro" name="videoIntroduction"></textarea>
+        </li>
+        <button class="btn btn-default" type="submit">publish</button>
+    </form>
+    </div>
   {{/with}}
 </template>

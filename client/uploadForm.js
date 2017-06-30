@@ -65,6 +65,78 @@ Template.videoEdit.helpers({
   }
 });
 
+Template.videoEdit.events({
+  'submit #editForm': function(e) {
+    e.preventDefault();
+    console.log(this);
+    // view type of the video
+    let id = this._id;
+    let viewType = document.querySelector('input[name="TypeOfVideo"]:checked').value;
+    Meteor.call('videoViewTypeUpdate', id, viewType, (err) => {
+      if (err) {
+        alert(err);
+      } else {
+        console.log('video view type update success!');
+      }
+    });
+
+    // type of the video price
+    let videoIntroduction = e.target.videoIntroduction.value;
+    console.log(videoIntroduction);
+    let priceType = document.querySelector('input[name="priceOfVideo"]:checked').value;
+    console.log(priceType);
+    let priceValue = e.target.videoValue.value;
+    check(priceValue, String);
+    console.log(priceValue);
+    
+    Meteor.call('videoIntroductionUpdate', id, videoIntroduction, (err) => {
+      if (err) {
+        alert(err);
+      } else {
+        console.log('video introduction update success!');
+      }
+    });
+    switch(priceType) {
+      case 'freeVideo':
+        Meteor.call('videoPriceTypeUpdate', id, 'freeVideo', (err) => {
+          if (err) {
+            alert(err);
+          } else {
+            console.log('video price type update success!');
+          }
+        });
+        break;
+      case 'donateVideo':
+        Meteor.call('videoPriceTypeUpdate', id, 'donateVideo', (err) => {
+          if (err) {
+            alert(err);
+          } else {
+            console.log('video price type update success!');
+          }
+        });
+        break;
+      case 'bargainVideo':
+        Meteor.call('videoPriceTypeUpdate', id, 'bargainVideo', (err) => {
+          if (err) {
+            alert(err);
+          } else {
+            console.log('video price type update success!');
+          }
+        });
+        break;
+    }
+    //$('#videoReviewModal').modal('show');
+    e.target.videoValue = '0';
+    Meteor.call('publishVideo', id, (err) => {
+      if (err) {
+        alert(err);
+      } else {
+        console.log('video success published!');
+      }
+    });
+  }
+});
+
 Template.uploadForm.events({
   'change #fileInput': function(e, template) {
   	if (e.currentTarget.files && e.currentTarget.files[0]) {
