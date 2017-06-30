@@ -1,10 +1,15 @@
 <template name="uploadForm">
 <div class="container">
+<style type="text/css">
+ .image-upload input
+{
+    display: none;
+}
+</style>
   {{#if currentUser}}
     {{#if showVideoEdit}}
       {{> videoEdit}}
     {{else}}
-    <h2>Upload</h2>
     <div>
       {{#if uploading}}
       <li>
@@ -22,7 +27,14 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>LeftTime: &nbsp;&nbsp;&nbsp;</span><span>{{status.estimateDuration}}</span>
       </li> 
       {{else}}
-      <input id="fileInput" type="file" />
+      <div class="image-upload">
+        <label for="fileInput">
+          <img src="upload.png">
+        </label>
+        <input id="fileInput" type="file" />
+       
+      </div>
+      
       <p><small>Upload file in <code>mp4</code> or <code>webm</code> or <code>ogg</code> format, with size less or equal to 128MB</small></p>
       {{/if}}
       </div>
