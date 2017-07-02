@@ -123,6 +123,13 @@ Template.videoEdit.events({
             console.log('video price type update success!');
           }
         });
+        Meteor.call('videoPriceUpdate', id, priceValue, (err) => {
+          if (err) {
+            alert(err);
+          } else {
+            console.log('video price update!');
+          }
+        });
         break;
     }
     //$('#videoReviewModal').modal('show');

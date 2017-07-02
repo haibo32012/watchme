@@ -6,14 +6,15 @@
   			{{#with file.with}}
     {{#if currentUser}}
         {{#if isTypeForAll}}
+          
         <div class="wrapper">
-        <div class="videocontent">
- 				<video id="{{_id}}" class="video-js vjs-fluid" width="640px" height="264px" controls="controls" autoplay data-setup={} style="min-height: 150px; max-width: 640px; text-align: center">
+          <div class="videocontent">
+ 				   <video id="{{_id}}" class="video-js vjs-fluid" width="640px" height="264px" controls="controls" autoplay data-setup={} style="min-height: 150px; max-width: 640px; text-align: center">
     				<source src="{{link}}?play=true" type="{{type}}"/>
             
             
-  	 	 	</video>
-        </div>
+  	 	 	   </video>
+          </div>
         </div>
         {{else}}
           <li>

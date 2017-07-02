@@ -4,6 +4,7 @@ import files from '/lib/collections/collection.js';
 import shareCollection from '/lib/collections/sharecollection.js';
 import UserLikeCollection from '/lib/collections/userLikeCollection.js';
 import userWatchedCollection from '/lib/collections/userWatchedCollection.js';
+import Pay from '/lib/collections/payCollection.js';
 import './videoPlay.html';
 import './comment.js';
 
@@ -79,10 +80,11 @@ Template.videoPlay.onRendered(function() {
 Template.videoPlay.helpers({
 
 	isTypeForAll: function() {
-		let id = FlowRouter.getParam('_id');
+		//console.log(this.name);
+		//let id = FlowRouter.getParam('_id');
 		let user = Meteor.user();
-		let file = files.findOne({_id: id}) || {};
-		if (file.meta.viewType === 'all') {
+		//let file = files.findOne({_id: id}) || {};
+		if (this.meta.viewType === 'all') {
 			return true;
 		} else {
 			if (user.profile.isAdult) {
@@ -93,6 +95,17 @@ Template.videoPlay.helpers({
 		}
 		
 	},
+	/*haveRightWatch: function() {
+		if (this.meta.priceType !== 'bargainVideo') {
+			return true;
+		} else {
+			if () {
+
+			} else {
+				
+			}
+		}
+	},*/
 	file: function() {
 		let id = FlowRouter.getParam('_id');
 		return files.findOne({_id: id});
